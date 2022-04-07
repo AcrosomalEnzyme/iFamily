@@ -11,10 +11,10 @@ class ScoreBoard extends AcGameObject
 
         //胜利和失败的图标
         this.win_img = new Image();
-        this.win_img.src = "https://app1881.acapp.acwing.com.cn/static/image/playground/win2.png"
+        this.win_img.src = "http://175.178.119.52:8000/static/image/playground/win2.png"
 
         this.lose_img = new Image();
-        this.lose_img.src = "https://app1881.acapp.acwing.com.cn/static/image/playground/lose2.png"
+        this.lose_img.src = "http://175.178.119.52:8000/static/image/playground/lose2.png"
 
         this.start();
     }
