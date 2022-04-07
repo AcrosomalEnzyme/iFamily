@@ -56,7 +56,7 @@ class Settings
 
                     <br>
                     <div class="ac-game-settings-acwing">
-                        <img width="30" src="https://app1881.acapp.acwing.com.cn/static/image/settings/acwing_logo.png">
+                        <img width="30" src="http://175.178.119.52:8000/static/image/settings/acwing_logo.png">
                         <br>
                         <div>
                             AcWing一键登录
@@ -119,7 +119,7 @@ class Settings
 
                     <br>
                     <div class="ac-game-settings-acwing">
-                        <img width="30" src="https://app1881.acapp.acwing.com.cn/static/image/settings/acwing_logo.png">
+                        <img width="30" src="http://175.178.119.52:8000/static/image/settings/acwing_logo.png">
                         <br>
                         <div>
                             AcWing一键登录
@@ -225,7 +225,7 @@ class Settings
     acwing_login()
     {
         $.ajax({
-            url: "https://app1881.acapp.acwing.com.cn/settings/acwing/web/apply_code/",
+            url: "http://175.178.119.52:8000/settings/acwing/web/apply_code/",
             type: "GET",
             success: function(res){
                 //console.log(res);
@@ -250,7 +250,7 @@ class Settings
         this.$login_error_message.empty();
 
         $.ajax({
-            url: "https://app1881.acapp.acwing.com.cn/settings/login/",
+            url: "http://175.178.119.52:8000/settings/login/",
             type: "GET",
             data: {
                 username: username,
@@ -286,7 +286,7 @@ class Settings
         //console.log(password_confirm);
 
         $.ajax({
-            url: "https://app1881.acapp.acwing.com.cn/settings/register/",
+            url: "http://175.178.119.52:8000/settings/register/",
             type: "GET",
             data: {
                 username: username,
@@ -318,7 +318,7 @@ class Settings
         else
         {
             $.ajax({
-                url: "https://app1881.acapp.acwing.com.cn/settings/logout/",
+                url: "http://175.178.119.52:8000/settings/logout/",
                 type: "GET",
                 success: function(res){
                     //console.log(res);
@@ -367,7 +367,7 @@ class Settings
     {
         let outer = this;
         $.ajax({
-            url: "https://app1881.acapp.acwing.com.cn/settings/acwing/acapp/apply_code/",
+            url: "http://175.178.119.52:8000/settings/acwing/acapp/apply_code/",
             type: "GET",
             success: function(res){
                 if(res.result === "success")
