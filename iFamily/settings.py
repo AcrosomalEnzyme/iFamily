@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,18 +20,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-tf_a%#f4z)031eo(tgp7mv$f2bzj68^xo#okvr4nvjn2ypd-!p'
+SECRET_KEY = 'django-insecure-!w)b%jek4j5w*4^7jg5hp0x#o=3w$5(-3s9gqm$yrp!e9m^v(a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 
 # 浏览器访问：http://175.178.119.52:8000/
 # 会出现：Invalid HTTP_HOST header: '175.178.119.52:8000'. You may need to add '175.178.119.52' to ALLOWED_HOSTS.
 # 将175.178.119.52加入ALLOWED_HOSTS：
 # 可以ag ALLOWED_HOSTS，进行搜索定位
 
-ALLOWED_HOSTS = ["175.178.119.52","127.0.0.1",]
+ALLOWED_HOSTS = ["175.178.119.52","127.0.0.1","app1881.iFamily.acwing.com.cn"]
 
 
 # Application definition
@@ -91,6 +90,16 @@ DATABASES = {
     }
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+    },
+}
+USER_AGENTS_CACHE = 'default'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -116,6 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
+# 设置时区
 TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
@@ -128,9 +138,28 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+# 这个只用改一次。一般情况下，static存开发者文件，media存用户文件
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+ASGI_APPLICATION = 'iFamily.asgi.application'
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
+
+#设定每个游戏房间的容量
+ROOM_CAPACITY = 3
