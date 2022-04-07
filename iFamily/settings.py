@@ -25,7 +25,13 @@ SECRET_KEY = 'django-insecure-tf_a%#f4z)031eo(tgp7mv$f2bzj68^xo#okvr4nvjn2ypd-!p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+# 浏览器访问：http://175.178.119.52:8000/
+# 会出现：Invalid HTTP_HOST header: '175.178.119.52:8000'. You may need to add '175.178.119.52' to ALLOWED_HOSTS.
+# 将175.178.119.52加入ALLOWED_HOSTS：
+# 可以ag ALLOWED_HOSTS，进行搜索定位
+
+ALLOWED_HOSTS = ["175.178.119.52","127.0.0.1",]
 
 
 # Application definition
@@ -105,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
