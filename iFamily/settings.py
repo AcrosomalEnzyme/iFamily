@@ -36,7 +36,12 @@ ALLOWED_HOSTS = ["175.178.119.52","127.0.0.1",]
 
 # Application definition
 
+# 进入game文件夹，apps.py，将gameconfig加入配置文件的INSTALLED_APPS
+# 'game.apps.GameConfig',
+# 对数据库有影响
 INSTALLED_APPS = [
+    'channels',
+    'game.apps.GameConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
