@@ -1,7 +1,7 @@
 #! /bin/bash
 
 #打包game的app的所有JavaScript文件
-JS_PATH=/home/acs/acapp/game/static/js/
+JS_PATH=/home/lyl/iFamily/game/static/js/
 JS_PATH_DIST=${JS_PATH}dist/
 JS_PATH_SRC=${JS_PATH}src/
 
