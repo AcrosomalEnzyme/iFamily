@@ -53,12 +53,12 @@ class Player extends AcGameObject {
             this.fireball_coldtime = 3;
             this.fireball_img = new Image();
             //绘画火球技能
-            this.fireball_img.src = "http://175.178.119.52:8000/static/image/playground/fireball.png";
+            this.fireball_img.src = "http://175.178.119.52/static/image/playground/fireball.png";
 
             //闪现技能
             this.blink_coldtime = 5;
             this.blink_img = new Image();
-            this.blink_img.src = "http://175.178.119.52:8000/static/image/playground/blink.png";
+            this.blink_img.src = "http://175.178.119.52/static/image/playground/blink.png";
         }
     }
 
