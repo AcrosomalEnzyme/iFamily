@@ -472,12 +472,12 @@ class Player extends AcGameObject {
             this.fireball_coldtime = 3;
             this.fireball_img = new Image();
             //绘画火球技能
-            this.fireball_img.src = "https://app1881.acapp.acwing.com.cn/static/image/playground/fireball.png";
+            this.fireball_img.src = "http://175.178.119.52/static/image/playground/fireball.png";
 
             //闪现技能
             this.blink_coldtime = 5;
             this.blink_img = new Image();
-            this.blink_img.src = "https://app1881.acapp.acwing.com.cn/static/image/playground/blink.png";
+            this.blink_img.src = "http://175.178.119.52/static/image/playground/blink.png";
         }
     }
 
@@ -994,10 +994,10 @@ class ScoreBoard extends AcGameObject
 
         //胜利和失败的图标
         this.win_img = new Image();
-        this.win_img.src = "https://app1881.acapp.acwing.com.cn/static/image/playground/win2.png"
+        this.win_img.src = "http://175.178.119.52/static/image/playground/win2.png"
 
         this.lose_img = new Image();
-        this.lose_img.src = "https://app1881.acapp.acwing.com.cn/static/image/playground/lose2.png"
+        this.lose_img.src = "http://175.178.119.52/static/image/playground/lose2.png"
 
         this.start();
     }
@@ -1218,7 +1218,7 @@ class MultiPlayerSocket {
         this.playground = playground;
 
         //wss的链接
-        this.ws = new WebSocket("wss://app1881.acapp.acwing.com.cn/wss/multiplayer/");
+        this.ws = new WebSocket("wss://175.178.119.52/wss/multiplayer/");
 
         this.start();
     }
@@ -1715,7 +1715,7 @@ class Settings
 
                     <br>
                     <div class="ac-game-settings-acwing">
-                        <img width="30" src="http://175.178.119.52:8000/static/image/settings/acwing_logo.png">
+                        <img width="30" src="http://175.178.119.52/static/image/settings/acwing_logo.png">
                         <br>
                         <div>
                             AcWing一键登录
@@ -1778,7 +1778,7 @@ class Settings
 
                     <br>
                     <div class="ac-game-settings-acwing">
-                        <img width="30" src="http://175.178.119.52:8000/static/image/settings/acwing_logo.png">
+                        <img width="30" src="http://175.178.119.52/static/image/settings/acwing_logo.png">
                         <br>
                         <div>
                             AcWing一键登录
@@ -1884,7 +1884,7 @@ class Settings
     acwing_login()
     {
         $.ajax({
-            url: "http://175.178.119.52:8000/settings/acwing/web/apply_code/",
+            url: "http://175.178.119.52/settings/acwing/web/apply_code/",
             type: "GET",
             success: function(res){
                 //console.log(res);
@@ -1909,7 +1909,7 @@ class Settings
         this.$login_error_message.empty();
 
         $.ajax({
-            url: "http://175.178.119.52:8000/settings/login/",
+            url: "http://175.178.119.52/settings/login/",
             type: "GET",
             data: {
                 username: username,
@@ -1945,7 +1945,7 @@ class Settings
         //console.log(password_confirm);
 
         $.ajax({
-            url: "http://175.178.119.52:8000/settings/register/",
+            url: "http://175.178.119.52/settings/register/",
             type: "GET",
             data: {
                 username: username,
@@ -1977,7 +1977,7 @@ class Settings
         else
         {
             $.ajax({
-                url: "http://175.178.119.52:8000/settings/logout/",
+                url: "http://175.178.119.52/settings/logout/",
                 type: "GET",
                 success: function(res){
                     //console.log(res);
@@ -2026,7 +2026,7 @@ class Settings
     {
         let outer = this;
         $.ajax({
-            url: "http://175.178.119.52:8000/settings/acwing/acapp/apply_code/",
+            url: "http://175.178.119.52/settings/acwing/acapp/apply_code/",
             type: "GET",
             success: function(res){
                 if(res.result === "success")
@@ -2041,20 +2041,22 @@ class Settings
     //获取用户是否登录的状态，web端
     getinfo_web()
     {
+        console.log("1");
         //为了记录外部的“this”
         let outer = this;
         $.ajax({
             //像相应的链接发送请求
-            url:"http://175.178.119.52:8000/settings/getinfo/",
+            url:"http://175.178.119.52/settings/getinfo/",
             type:"GET",
             data:{
                 platform: outer.platform,
             },
             success: function(res)
             {
-                //console.log(res);
+                console.log(res);
                 if(res.result === "success")
                 {
+                    console.log("1");
                     //记录传回来的用户名称和头像
                     outer.username = res.username;
                     outer.photo = res.photo;

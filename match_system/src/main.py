@@ -21,7 +21,7 @@ from threading import Thread
 
 
 #引入channel_layer
-from acapp.asgi import channel_layer
+from iFamily.asgi import channel_layer
 #引入使并行变为串行
 from asgiref.sync import async_to_sync
 #引入Redis存储匹配结果

@@ -382,6 +382,7 @@ class Settings
     //获取用户是否登录的状态，web端
     getinfo_web()
     {
+        console.log("1");
         //为了记录外部的“this”
         let outer = this;
         $.ajax({
@@ -393,9 +394,10 @@ class Settings
             },
             success: function(res)
             {
-                //console.log(res);
+                console.log(res);
                 if(res.result === "success")
                 {
+                    console.log("1");
                     //记录传回来的用户名称和头像
                     outer.username = res.username;
                     outer.photo = res.photo;

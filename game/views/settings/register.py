@@ -35,7 +35,7 @@ def register(request):
     user.save()
 
     #在player表创建用户
-    Player.objects.create(user=user, photo="https://app1881.acapp.acwing.com.cn/static/image/test.jpg")
+    Player.objects.create(user=user, photo="http://175.178.119.52/static/image/test.jpg")
     #创建完直接登录
     login(request, user)
     #返回成功信息
