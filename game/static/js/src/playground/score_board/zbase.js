@@ -1,4 +1,4 @@
-class ScoreBoard extends AcGameObject
+class ScoreBoard extends GameObject
 {
     constructor(playground)
     {

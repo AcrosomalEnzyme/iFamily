@@ -1,4 +1,4 @@
-class NoticeBoard extends AcGameObject
+class NoticeBoard extends GameObject
 {
     constructor(playground)
     {

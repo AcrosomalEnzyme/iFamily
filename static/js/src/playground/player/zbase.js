@@ -1,5 +1,5 @@
 //玩家也是object
-class Player extends AcGameObject {
+class Player extends GameObject {
 
     //玩家的坐标，半径，颜色（后续开发可以把颜色换成头像），
     //每秒钟移动百分之多少，用高度的百分比，使得游戏公平

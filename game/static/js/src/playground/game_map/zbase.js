@@ -1,5 +1,5 @@
 //GameMap是AcGameObject的派生类
-class GameMap extends AcGameObject {
+class GameMap extends GameObject {
     constructor(playground) {
         //调用基类的构造函数，相当于将自己注册进AC_GAME_OBJECTS这个数组
         super();

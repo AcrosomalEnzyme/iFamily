@@ -1,4 +1,4 @@
-class Particle extends AcGameObject{
+class Particle extends GameObject{
     //需要传入粒子位置的坐标，速度方向，大小，颜色
     //需要绘画，需要ctx，所以也要传入playground
     //移动的距离要有限制

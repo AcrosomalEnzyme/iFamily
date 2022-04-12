@@ -1,5 +1,5 @@
 //继承AcGameObject类
-class FireBall extends AcGameObject
+class FireBall extends GameObject
 {
     //player判断是不是自己，不能对自己造成攻击
     //火球速度不会改变，只需要传vx,vy

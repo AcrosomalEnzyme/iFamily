@@ -1,11 +1,11 @@
-let AC_GAME_OBJECTS = [];
+let GAME_OBJECTS = [];
 
-class AcGameObject {
+class GameObject {
     constructor() {
-        AC_GAME_OBJECTS.push(this);
+        GAME_OBJECTS.push(this);
 
         this.has_called_start = false; //是否执行过start函数
-        this.timedelta = 0; //当前帧距离上一帧的时间间隔，不同浏览器不一定每秒钟调用 requestAnimationFrame(AC_GAME_ANIMATION); 60次数。为了方便统一速度
+        this.timedelta = 0; //当前帧距离上一帧的时间间隔，不同浏览器不一定每秒钟调用 requestAnimationFrame(GAME_ANIMATION); 60次数。为了方便统一速度
         this.uuid = this.create_uuid();//创建唯一编号
     }
 
@@ -45,16 +45,16 @@ class AcGameObject {
     destroy() {
         //console.log("destroy");
         this.on_destroy();
-        for (let i = 0; i < AC_GAME_OBJECTS.length; i ++)
+        for (let i = 0; i < GAME_OBJECTS.length; i ++)
         {
             //JavaScript中用三个等号表示全等
-            if(AC_GAME_OBJECTS[i] === this)
+            if(GAME_OBJECTS[i] === this)
             {
-                AC_GAME_OBJECTS.splice(i,1);
+                GAME_OBJECTS.splice(i,1);
                 break;
             }
         }
-        //console.log(AC_GAME_OBJECTS.length);
+        //console.log(GAME_OBJECTS.length);
 
     }
 }
@@ -65,13 +65,13 @@ class AcGameObject {
 let last_timestamp;
 //timestamp时间戳，记录什么时候调用的这个函数
 ////timeStamp事件属性返回从文档完成加载到创建特定事件的毫秒数。
-let AC_GAME_ANIMATION = function(timestamp)
+let GAME_ANIMATION = function(timestamp)
 {
 
     //length不需要加括号
-    for(let i = 0; i < AC_GAME_OBJECTS.length; i ++ )
+    for(let i = 0; i < GAME_OBJECTS.length; i ++ )
     {
-        let obj = AC_GAME_OBJECTS[i];
+        let obj = GAME_OBJECTS[i];
         //如果没有被执行第一帧
         if (!obj.has_called_start)
         {
@@ -87,18 +87,18 @@ let AC_GAME_ANIMATION = function(timestamp)
         }
     }
 
-    for(let i = 0; i < AC_GAME_OBJECTS.length; i ++)
+    for(let i = 0; i < GAME_OBJECTS.length; i ++)
     {
-        let obj = AC_GAME_OBJECTS[i];
+        let obj = GAME_OBJECTS[i];
         obj.late_update();
     }
 
     //更新时间戳
     last_timestamp = timestamp;
     //利用递归实现每一帧都调用一次这个函数
-    requestAnimationFrame(AC_GAME_ANIMATION);
+    requestAnimationFrame(GAME_ANIMATION);
 
 }
 
 //一秒钟调用60次
-requestAnimationFrame(AC_GAME_ANIMATION);
+requestAnimationFrame(GAME_ANIMATION);
