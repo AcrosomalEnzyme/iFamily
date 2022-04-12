@@ -12,50 +12,50 @@ class Settings
 
         //渲染登录界面
         this.$settings = $(`
-            <div class="ac-game-settings">
+            <div class="game-settings">
 
 
-                <div class="ac-game-settings-login">
+                <div class="game-settings-login">
 
 
-                    <div class="ac-game-settings-title">
+                    <div class="game-settings-title">
                         登录
                     </div>
 
 
-                    <div class="ac-game-settings-username">
-                        <div class="ac-game-settings-item">
+                    <div class="game-settings-username">
+                        <div class="game-settings-item">
                             <input type="text" placeholder="用户名">
                         </div>
                     </div>
 
 
-                    <div class="ac-game-settings-password">
-                        <div class="ac-game-settings-item">
+                    <div class="game-settings-password">
+                        <div class="game-settings-item">
                             <input type="password" placeholder="密码">
                         </div>
                     </div>
 
 
-                    <div class="ac-game-settings-submit">
-                        <div class="ac-game-settings-item">
+                    <div class="game-settings-submit">
+                        <div class="game-settings-item">
                             <button>登录</button>
                         </div>
                     </div>
 
 
-                    <div class="ac-game-settings-error-message">
+                    <div class="game-settings-error-message">
                         
                     </div>
 
 
-                    <div class="ac-game-settings-option">
+                    <div class="game-settings-option">
                         注册
                     </div>
 
 
                     <br>
-                    <div class="ac-game-settings-acwing">
+                    <div class="game-settings-acwing">
                         <img width="30" src="http://175.178.119.52/static/image/settings/acwing_logo.png">
                         <br>
                         <div>
@@ -72,53 +72,53 @@ class Settings
 
 
 
-                <div class="ac-game-settings-register">
+                <div class="game-settings-register">
 
-                    <div class="ac-game-settings-title">
+                    <div class="game-settings-title">
                         注册
                     </div>
 
 
-                    <div class="ac-game-settings-username">
-                        <div class="ac-game-settings-item">
+                    <div class="game-settings-username">
+                        <div class="game-settings-item">
                             <input type="text" placeholder="用户名">
                         </div>
                     </div>
 
 
-                    <div class="ac-game-settings-password ac-game-settings-password-first">
-                        <div class="ac-game-settings-item">
+                    <div class="game-settings-password game-settings-password-first">
+                        <div class="game-settings-item">
                             <input type="password" placeholder="密码">
                         </div>
                     </div>
 
 
-                    <div class="ac-game-settings-password ac-game-settings-password-second">
-                        <div class="ac-game-settings-item">
+                    <div class="game-settings-password game-settings-password-second">
+                        <div class="game-settings-item">
                             <input type="password" placeholder="确认密码">
                         </div>
                     </div>
 
 
-                    <div class="ac-game-settings-submit">
-                        <div class="ac-game-settings-item">
+                    <div class="game-settings-submit">
+                        <div class="game-settings-item">
                             <button>注册</button>
                         </div>
                     </div>
 
 
-                    <div class="ac-game-settings-error-message">
+                    <div class="game-settings-error-message">
                         
                     </div>
 
 
-                    <div class="ac-game-settings-option">
+                    <div class="game-settings-option">
                         登录
                     </div>
 
 
                     <br>
-                    <div class="ac-game-settings-acwing">
+                    <div class="game-settings-acwing">
                         <img width="30" src="http://175.178.119.52/static/image/settings/acwing_logo.png">
                         <br>
                         <div>
@@ -132,28 +132,28 @@ class Settings
         `);
 
         //提取出整个登录框
-        this.$login = this.$settings.find(".ac-game-settings-login");
+        this.$login = this.$settings.find(".game-settings-login");
         //提取相应的信息，不是相邻两级，不用 >
-        this.$login_username = this.$login.find(".ac-game-settings-username input");
-        this.$login_password = this.$login.find(".ac-game-settings-password input");
-        this.$login_submit = this.$login.find(".ac-game-settings-submit button");
-        this.$login_error_message = this.$login.find(".ac-game-settings-error-message");
-        this.$login_register = this.$login.find(".ac-game-settings-option");
+        this.$login_username = this.$login.find(".game-settings-username input");
+        this.$login_password = this.$login.find(".game-settings-password input");
+        this.$login_submit = this.$login.find(".game-settings-submit button");
+        this.$login_error_message = this.$login.find(".game-settings-error-message");
+        this.$login_register = this.$login.find(".game-settings-option");
         this.$login.hide();
 
         //提取出整个注册框
-        this.$register = this.$settings.find(".ac-game-settings-register");
+        this.$register = this.$settings.find(".game-settings-register");
         //提取出相应的信息
-        this.$register_username = this.$register.find(".ac-game-settings-username input");
-        this.$register_password = this.$register.find(".ac-game-settings-password-first input");
-        this.$register_password_confirm = this.$register.find(".ac-game-settings-password-second input");
-        this.$register_submit = this.$register.find(".ac-game-settings-submit button");
-        this.$register_error_message = this.$register.find(".ac-game-settings-error-message");
-        this.$register_login = this.$register.find(".ac-game-settings-option");
+        this.$register_username = this.$register.find(".game-settings-username input");
+        this.$register_password = this.$register.find(".game-settings-password-first input");
+        this.$register_password_confirm = this.$register.find(".game-settings-password-second input");
+        this.$register_submit = this.$register.find(".game-settings-submit button");
+        this.$register_error_message = this.$register.find(".game-settings-error-message");
+        this.$register_login = this.$register.find(".game-settings-option");
 
         this.$register.hide();
 
-        this.$acwing_login = this.$settings.find(".ac-game-settings-acwing img");
+        this.$acwing_login = this.$settings.find(".game-settings-acwing img");
 
         this.root.$game.append(this.$settings);
 
