@@ -25,7 +25,7 @@ class AcGameMenu {
         //还没有确认用户是否登录，进行隐藏
         this.$menu.hide();
         //对象创建完后，将对象添加到div中
-        this.root.$ac_game.append(this.$menu);
+        this.root.$game.append(this.$menu);
         this.$single_mode = this.$menu.find('.ac-game-menu-field-item-sigle-mode');
         this.$multi_mode = this.$menu.find('.ac-game-menu-field-item-multi-mode');
         this.$settings= this.$menu.find('.ac-game-menu-field-item-settings');
@@ -1488,7 +1488,7 @@ class AcGamePlayground {
         //加入到父对象之前要关掉，用hide
         this.hide();
 
-        this.root.$ac_game.append(this.$playground);
+        this.root.$game.append(this.$playground);
 
         this.start();
 
@@ -1814,7 +1814,7 @@ class Settings
 
         this.$acwing_login = this.$settings.find(".ac-game-settings-acwing img");
 
-        this.root.$ac_game.append(this.$settings);
+        this.root.$game.append(this.$settings);
 
 
         this.start();

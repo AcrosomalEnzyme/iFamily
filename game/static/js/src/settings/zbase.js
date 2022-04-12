@@ -155,7 +155,7 @@ class Settings
 
         this.$acwing_login = this.$settings.find(".ac-game-settings-acwing img");
 
-        this.root.$ac_game.append(this.$settings);
+        this.root.$game.append(this.$settings);
 
 
         this.start();

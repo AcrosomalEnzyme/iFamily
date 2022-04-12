@@ -1,22 +1,22 @@
-class AcGameMenu {
+class GameMenu {
     constructor(root) {
         //传入总对象的对象
         this.root = root;
         //$：在jQuery中，HTML对象的话可以加$，普通对象不加$
         //`：类似与Python的三个```
         this.$menu = $(`
-<div class="ac-game-menu">
-    <div class="ac-game-menu-field">
+<div class="game-menu">
+    <div class="game-menu-field">
 <!--    每一项可以有多个class，用空格隔开即可，多取名字为了索引出来-->
-        <div class="ac-game-menu-field-item ac-game-menu-field-item-sigle-mode">
+        <div class="game-menu-field-item game-menu-field-item-sigle-mode">
             单人模式
         </div>
         <br>
-        <div class="ac-game-menu-field-item ac-game-menu-field-item-multi-mode">
+        <div class="game-menu-field-item game-menu-field-item-multi-mode">
             多人模式
         </div>
         <br>
-        <div class="ac-game-menu-field-item ac-game-menu-field-item-settings">
+        <div class="game-menu-field-item game-menu-field-item-settings">
             退出登录
         </div>
     </div>
@@ -25,10 +25,10 @@ class AcGameMenu {
         //还没有确认用户是否登录，进行隐藏
         this.$menu.hide();
         //对象创建完后，将对象添加到div中
-        this.root.$ac_game.append(this.$menu);
-        this.$single_mode = this.$menu.find('.ac-game-menu-field-item-sigle-mode');
-        this.$multi_mode = this.$menu.find('.ac-game-menu-field-item-multi-mode');
-        this.$settings= this.$menu.find('.ac-game-menu-field-item-settings');
+        this.root.$game.append(this.$menu);
+        this.$single_mode = this.$menu.find('.game-menu-field-item-sigle-mode');
+        this.$multi_mode = this.$menu.find('.game-menu-field-item-multi-mode');
+        this.$settings= this.$menu.find('.game-menu-field-item-settings');
         
         this.start();
     }

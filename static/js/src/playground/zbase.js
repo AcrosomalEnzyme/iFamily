@@ -5,7 +5,7 @@ class AcGamePlayground {
         //加入到父对象之前要关掉，用hide
         this.hide();
 
-        this.root.$ac_game.append(this.$playground);
+        this.root.$game.append(this.$playground);
 
         this.start();
 
