@@ -1,22 +1,22 @@
-class AcGameMenu {
+class GameMenu {
     constructor(root) {
         //传入总对象的对象
         this.root = root;
         //$：在jQuery中，HTML对象的话可以加$，普通对象不加$
         //`：类似与Python的三个```
         this.$menu = $(`
-<div class="ac-game-menu">
-    <div class="ac-game-menu-field">
+<div class="game-menu">
+    <div class="game-menu-field">
 <!--    每一项可以有多个class，用空格隔开即可，多取名字为了索引出来-->
-        <div class="ac-game-menu-field-item ac-game-menu-field-item-sigle-mode">
+        <div class="game-menu-field-item game-menu-field-item-sigle-mode">
             单人模式
         </div>
         <br>
-        <div class="ac-game-menu-field-item ac-game-menu-field-item-multi-mode">
+        <div class="game-menu-field-item game-menu-field-item-multi-mode">
             多人模式
         </div>
         <br>
-        <div class="ac-game-menu-field-item ac-game-menu-field-item-settings">
+        <div class="game-menu-field-item game-menu-field-item-settings">
             退出登录
         </div>
     </div>
@@ -26,9 +26,9 @@ class AcGameMenu {
         this.$menu.hide();
         //对象创建完后，将对象添加到div中
         this.root.$game.append(this.$menu);
-        this.$single_mode = this.$menu.find('.ac-game-menu-field-item-sigle-mode');
-        this.$multi_mode = this.$menu.find('.ac-game-menu-field-item-multi-mode');
-        this.$settings= this.$menu.find('.ac-game-menu-field-item-settings');
+        this.$single_mode = this.$menu.find('.game-menu-field-item-sigle-mode');
+        this.$multi_mode = this.$menu.find('.game-menu-field-item-multi-mode');
+        this.$settings= this.$menu.find('.game-menu-field-item-settings');
         
         this.start();
     }
@@ -74,11 +74,11 @@ class AcGameMenu {
 
 
 }
-let AC_GAME_OBJECTS = [];
+let GAME_OBJECTS = [];
 
-class AcGameObject {
+class GameObject {
     constructor() {
-        AC_GAME_OBJECTS.push(this);
+        GAME_OBJECTS.push(this);
 
         this.has_called_start = false; //是否执行过start函数
         this.timedelta = 0; //当前帧距离上一帧的时间间隔，不同浏览器不一定每秒钟调用 requestAnimationFrame(GAME_ANIMATION); 60次数。为了方便统一速度
@@ -121,12 +121,12 @@ class AcGameObject {
     destroy() {
         //console.log("destroy");
         this.on_destroy();
-        for (let i = 0; i < AC_GAME_OBJECTS.length; i ++)
+        for (let i = 0; i < GAME_OBJECTS.length; i ++)
         {
             //JavaScript中用三个等号表示全等
-            if(AC_GAME_OBJECTS[i] === this)
+            if(GAME_OBJECTS[i] === this)
             {
-                AC_GAME_OBJECTS.splice(i,1);
+                GAME_OBJECTS.splice(i,1);
                 break;
             }
         }
@@ -141,13 +141,13 @@ class AcGameObject {
 let last_timestamp;
 //timestamp时间戳，记录什么时候调用的这个函数
 ////timeStamp事件属性返回从文档完成加载到创建特定事件的毫秒数。
-let AC_GAME_ANIMATION = function(timestamp)
+let GAME_ANIMATION = function(timestamp)
 {
 
     //length不需要加括号
-    for(let i = 0; i < AC_GAME_OBJECTS.length; i ++ )
+    for(let i = 0; i < GAME_OBJECTS.length; i ++ )
     {
-        let obj = AC_GAME_OBJECTS[i];
+        let obj = GAME_OBJECTS[i];
         //如果没有被执行第一帧
         if (!obj.has_called_start)
         {
@@ -163,21 +163,21 @@ let AC_GAME_ANIMATION = function(timestamp)
         }
     }
 
-    for(let i = 0; i < AC_GAME_OBJECTS.length; i ++)
+    for(let i = 0; i < GAME_OBJECTS.length; i ++)
     {
-        let obj = AC_GAME_OBJECTS[i];
+        let obj = GAME_OBJECTS[i];
         obj.late_update();
     }
 
     //更新时间戳
     last_timestamp = timestamp;
     //利用递归实现每一帧都调用一次这个函数
-    requestAnimationFrame(AC_GAME_ANIMATION);
+    requestAnimationFrame(GAME_ANIMATION);
 
 }
 
 //一秒钟调用60次
-requestAnimationFrame(AC_GAME_ANIMATION);
+requestAnimationFrame(GAME_ANIMATION);
 class ChatField
 {
     constructor(playground)
@@ -185,8 +185,8 @@ class ChatField
         this.playground = playground;
 
         //历史记录和输入框
-        this.$history = $(`<div class="ac-game-chat-field-history"></div>`);
-        this.$input = $(`<input type="text" class="ac-game-chat-field-input">`);
+        this.$history = $(`<div class="game-chat-field-history"></div>`);
+        this.$input = $(`<input type="text" class="game-chat-field-input">`);
 
         this.$history.hide();
         this.$input.hide();
@@ -289,7 +289,7 @@ class ChatField
     }
 }
 //GameMap是AcGameObject的派生类
-class GameMap extends AcGameObject {
+class GameMap extends GameObject {
     constructor(playground) {
         //调用基类的构造函数，相当于将自己注册进AC_GAME_OBJECTS这个数组
         super();
@@ -333,7 +333,7 @@ class GameMap extends AcGameObject {
         this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     }
 }
-class NoticeBoard extends AcGameObject
+class NoticeBoard extends GameObject
 {
     constructor(playground)
     {
@@ -367,7 +367,7 @@ class NoticeBoard extends AcGameObject
         this.ctx.fillText(this.text, this.playground.width / 2, 20);
     }
 }
-class Particle extends AcGameObject{
+class Particle extends GameObject{
     //需要传入粒子位置的坐标，速度方向，大小，颜色
     //需要绘画，需要ctx，所以也要传入playground
     //移动的距离要有限制
@@ -418,7 +418,7 @@ class Particle extends AcGameObject{
     }
 }
 //玩家也是object
-class Player extends AcGameObject {
+class Player extends GameObject {
 
     //玩家的坐标，半径，颜色（后续开发可以把颜色换成头像），
     //每秒钟移动百分之多少，用高度的百分比，使得游戏公平
@@ -981,7 +981,7 @@ class Player extends AcGameObject {
         //console.log(this.playground.players.length);
     }
 }
-class ScoreBoard extends AcGameObject
+class ScoreBoard extends GameObject
 {
     constructor(playground)
     {
@@ -1066,7 +1066,7 @@ class ScoreBoard extends AcGameObject
     }
 }
 //继承AcGameObject类
-class FireBall extends AcGameObject
+class FireBall extends GameObject
 {
     //player判断是不是自己，不能对自己造成攻击
     //火球速度不会改变，只需要传vx,vy
@@ -1481,10 +1481,10 @@ class MultiPlayerSocket {
 
 
 
-class AcGamePlayground {
+class GamePlayground {
     constructor(root) {
         this.root = root;
-        this.$playground = $(`<div class="ac-game-playground"></div>`);
+        this.$playground = $(`<div class="game-playground"></div>`);
         //加入到父对象之前要关掉，用hide
         this.hide();
 
@@ -1671,50 +1671,50 @@ class Settings
 
         //渲染登录界面
         this.$settings = $(`
-            <div class="ac-game-settings">
+            <div class="game-settings">
 
 
-                <div class="ac-game-settings-login">
+                <div class="game-settings-login">
 
 
-                    <div class="ac-game-settings-title">
+                    <div class="game-settings-title">
                         登录
                     </div>
 
 
-                    <div class="ac-game-settings-username">
-                        <div class="ac-game-settings-item">
+                    <div class="game-settings-username">
+                        <div class="game-settings-item">
                             <input type="text" placeholder="用户名">
                         </div>
                     </div>
 
 
-                    <div class="ac-game-settings-password">
-                        <div class="ac-game-settings-item">
+                    <div class="game-settings-password">
+                        <div class="game-settings-item">
                             <input type="password" placeholder="密码">
                         </div>
                     </div>
 
 
-                    <div class="ac-game-settings-submit">
-                        <div class="ac-game-settings-item">
+                    <div class="game-settings-submit">
+                        <div class="game-settings-item">
                             <button>登录</button>
                         </div>
                     </div>
 
 
-                    <div class="ac-game-settings-error-message">
+                    <div class="game-settings-error-message">
                         
                     </div>
 
 
-                    <div class="ac-game-settings-option">
+                    <div class="game-settings-option">
                         注册
                     </div>
 
 
                     <br>
-                    <div class="ac-game-settings-acwing">
+                    <div class="game-settings-acwing">
                         <img width="30" src="http://175.178.119.52/static/image/settings/acwing_logo.png">
                         <br>
                         <div>
@@ -1731,53 +1731,53 @@ class Settings
 
 
 
-                <div class="ac-game-settings-register">
+                <div class="game-settings-register">
 
-                    <div class="ac-game-settings-title">
+                    <div class="game-settings-title">
                         注册
                     </div>
 
 
-                    <div class="ac-game-settings-username">
-                        <div class="ac-game-settings-item">
+                    <div class="game-settings-username">
+                        <div class="game-settings-item">
                             <input type="text" placeholder="用户名">
                         </div>
                     </div>
 
 
-                    <div class="ac-game-settings-password ac-game-settings-password-first">
-                        <div class="ac-game-settings-item">
+                    <div class="game-settings-password game-settings-password-first">
+                        <div class="game-settings-item">
                             <input type="password" placeholder="密码">
                         </div>
                     </div>
 
 
-                    <div class="ac-game-settings-password ac-game-settings-password-second">
-                        <div class="ac-game-settings-item">
+                    <div class="game-settings-password game-settings-password-second">
+                        <div class="game-settings-item">
                             <input type="password" placeholder="确认密码">
                         </div>
                     </div>
 
 
-                    <div class="ac-game-settings-submit">
-                        <div class="ac-game-settings-item">
+                    <div class="game-settings-submit">
+                        <div class="game-settings-item">
                             <button>注册</button>
                         </div>
                     </div>
 
 
-                    <div class="ac-game-settings-error-message">
+                    <div class="game-settings-error-message">
                         
                     </div>
 
 
-                    <div class="ac-game-settings-option">
+                    <div class="game-settings-option">
                         登录
                     </div>
 
 
                     <br>
-                    <div class="ac-game-settings-acwing">
+                    <div class="game-settings-acwing">
                         <img width="30" src="http://175.178.119.52/static/image/settings/acwing_logo.png">
                         <br>
                         <div>
@@ -1791,28 +1791,28 @@ class Settings
         `);
 
         //提取出整个登录框
-        this.$login = this.$settings.find(".ac-game-settings-login");
+        this.$login = this.$settings.find(".game-settings-login");
         //提取相应的信息，不是相邻两级，不用 >
-        this.$login_username = this.$login.find(".ac-game-settings-username input");
-        this.$login_password = this.$login.find(".ac-game-settings-password input");
-        this.$login_submit = this.$login.find(".ac-game-settings-submit button");
-        this.$login_error_message = this.$login.find(".ac-game-settings-error-message");
-        this.$login_register = this.$login.find(".ac-game-settings-option");
+        this.$login_username = this.$login.find(".game-settings-username input");
+        this.$login_password = this.$login.find(".game-settings-password input");
+        this.$login_submit = this.$login.find(".game-settings-submit button");
+        this.$login_error_message = this.$login.find(".game-settings-error-message");
+        this.$login_register = this.$login.find(".game-settings-option");
         this.$login.hide();
 
         //提取出整个注册框
-        this.$register = this.$settings.find(".ac-game-settings-register");
+        this.$register = this.$settings.find(".game-settings-register");
         //提取出相应的信息
-        this.$register_username = this.$register.find(".ac-game-settings-username input");
-        this.$register_password = this.$register.find(".ac-game-settings-password-first input");
-        this.$register_password_confirm = this.$register.find(".ac-game-settings-password-second input");
-        this.$register_submit = this.$register.find(".ac-game-settings-submit button");
-        this.$register_error_message = this.$register.find(".ac-game-settings-error-message");
-        this.$register_login = this.$register.find(".ac-game-settings-option");
+        this.$register_username = this.$register.find(".game-settings-username input");
+        this.$register_password = this.$register.find(".game-settings-password-first input");
+        this.$register_password_confirm = this.$register.find(".game-settings-password-second input");
+        this.$register_submit = this.$register.find(".game-settings-submit button");
+        this.$register_error_message = this.$register.find(".game-settings-error-message");
+        this.$register_login = this.$register.find(".game-settings-option");
 
         this.$register.hide();
 
-        this.$acwing_login = this.$settings.find(".ac-game-settings-acwing img");
+        this.$acwing_login = this.$settings.find(".game-settings-acwing img");
 
         this.root.$game.append(this.$settings);
 
@@ -2085,13 +2085,13 @@ class Settings
     }
 }
 //模块化需要加export
-export class AcGame {
+export class Game {
     //通过是否有AcwingOS参数判断是否在是ACAPP中调用的
     constructor(id) {
         //console.log(AcWingOS);
         //id：div的id
         this.id = id;
-        this.$ac_game = $('#' + id);
+        this.$game = $('#' + id);
 
         //如果是ACAPP调用的，其中包含参数
         //this.AcWingOS = AcWingOS;
@@ -2099,8 +2099,8 @@ export class AcGame {
 
         //三者顺序不能变化，不然会有先运用再定义的情况
         this.settings = new Settings(this);
-        this.menu = new AcGameMenu(this);
-        this.playground = new AcGamePlayground(this);
+        this.menu = new GameMenu(this);
+        this.playground = new GamePlayground(this);
 
         this.start();
     }
@@ -2119,7 +2119,7 @@ export class AcGame {
 //
 // 创建并构造menu，调用位于menu文件夹的构造函数（this.menu = new AcGameMenu(this);），ac_game被传入，作为root
 // 为前面代码中创建的menu赋予一段HTML对象：
-//         this.$menu = $(`<div class="ac-game-menu"></div>`);
+//         this.$menu = $(`<div class="game-menu"></div>`);
 // 然后再将这段代码存进存进ac_game中，即存进了div中
 
 //流程：通过路由，进入view，返回HTML文件，检测js代码并执行，其中包含生成和创建一个ac_game对象，会调用构造函数，

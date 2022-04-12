@@ -1,11 +1,11 @@
 //模块化需要加export
-export class AcGame {
+export class Game {
     //通过是否有AcwingOS参数判断是否在是ACAPP中调用的
     constructor(id) {
         //console.log(AcWingOS);
         //id：div的id
         this.id = id;
-        this.$ac_game = $('#' + id);
+        this.$game = $('#' + id);
 
         //如果是ACAPP调用的，其中包含参数
         //this.AcWingOS = AcWingOS;
@@ -13,8 +13,8 @@ export class AcGame {
 
         //三者顺序不能变化，不然会有先运用再定义的情况
         this.settings = new Settings(this);
-        this.menu = new AcGameMenu(this);
-        this.playground = new AcGamePlayground(this);
+        this.menu = new GameMenu(this);
+        this.playground = new GamePlayground(this);
 
         this.start();
     }
@@ -33,7 +33,7 @@ export class AcGame {
 //
 // 创建并构造menu，调用位于menu文件夹的构造函数（this.menu = new AcGameMenu(this);），ac_game被传入，作为root
 // 为前面代码中创建的menu赋予一段HTML对象：
-//         this.$menu = $(`<div class="ac-game-menu"></div>`);
+//         this.$menu = $(`<div class="game-menu"></div>`);
 // 然后再将这段代码存进存进ac_game中，即存进了div中
 
 //流程：通过路由，进入view，返回HTML文件，检测js代码并执行，其中包含生成和创建一个ac_game对象，会调用构造函数，
