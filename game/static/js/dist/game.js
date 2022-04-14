@@ -1884,7 +1884,7 @@ class Settings
     acwing_login()
     {
         $.ajax({
-            url: "http://175.178.119.52/settings/acwing/web/apply_code/",
+            url: "http://175.178.119.52/game/settings/acwing/web/apply_code/",
             type: "GET",
             success: function(res){
                 //console.log(res);
