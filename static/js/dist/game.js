@@ -1884,7 +1884,7 @@ class Settings
     acwing_login()
     {
         $.ajax({
-            url: "http://175.178.119.52/settings/acwing/web/apply_code/",
+            url: "http://175.178.119.52/game/settings/acwing/web/apply_code/",
             type: "GET",
             success: function(res){
                 //console.log(res);
@@ -1909,7 +1909,7 @@ class Settings
         this.$login_error_message.empty();
 
         $.ajax({
-            url: "http://175.178.119.52/settings/login/",
+            url: "http://175.178.119.52/game/settings/login/",
             type: "GET",
             data: {
                 username: username,
@@ -1945,7 +1945,7 @@ class Settings
         //console.log(password_confirm);
 
         $.ajax({
-            url: "http://175.178.119.52/settings/register/",
+            url: "http://175.178.119.52/game/settings/register/",
             type: "GET",
             data: {
                 username: username,
@@ -1977,7 +1977,7 @@ class Settings
         else
         {
             $.ajax({
-                url: "http://175.178.119.52/settings/logout/",
+                url: "http://175.178.119.52/game/settings/logout/",
                 type: "GET",
                 success: function(res){
                     //console.log(res);
@@ -2026,7 +2026,7 @@ class Settings
     {
         let outer = this;
         $.ajax({
-            url: "http://175.178.119.52/settings/acwing/acapp/apply_code/",
+            url: "http://175.178.119.52/game/settings/acwing/acapp/apply_code/",
             type: "GET",
             success: function(res){
                 if(res.result === "success")
@@ -2046,7 +2046,7 @@ class Settings
         let outer = this;
         $.ajax({
             //像相应的链接发送请求
-            url:"http://175.178.119.52/settings/getinfo/",
+            url:"http://175.178.119.52/game/settings/getinfo/",
             type:"GET",
             data:{
                 platform: outer.platform,
