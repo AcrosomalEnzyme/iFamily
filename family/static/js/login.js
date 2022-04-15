@@ -3,6 +3,7 @@ class Login
     constructor() {
         this.username = "";
         this.photo = "";
+        this.platform = "WEB";
 
         this.$login = $('.admin_login');
         this.$login_username = this.$login.find("#login_username");
@@ -113,7 +114,7 @@ class Login
                     outer.photo = res.photo;
                     //把当前界面隐藏，并展示菜单界面
                     outer.hide();
-                    outer.root.menu.show();
+                    //outer.root.menu.show();
                 }
                 else
                 {
