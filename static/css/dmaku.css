@@ -202,3 +202,13 @@ header .rt_nav li .quit_icon:before{content:"Q";}
 #pie{width:700px;height:400px;margin-top:-15px}
 body{height:100%;background:#16a085;overflow:hidden;}
 canvas{z-index:-1;position:absolute;}
+
+#login_error_message
+{
+    color: red;
+    font-size: 2vh;
+    display: inline;
+    padding-top: 1cm;
+    position: relative;
+    left: 25%;
+}
