@@ -112,8 +112,9 @@ class Login
                     //记录传回来的用户名称和头像
                     outer.username = res.username;
                     outer.photo = res.photo;
-                    //把当前界面隐藏，并展示菜单界面
-                    outer.hide();
+                    //跳转到主页
+                    window.location.href="http://175.178.119.52/game/"
+                    //outer.hide();
                     //outer.root.menu.show();
                 }
                 else
