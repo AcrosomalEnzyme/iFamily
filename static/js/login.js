@@ -113,8 +113,7 @@ class Login
                     outer.username = res.username;
                     outer.photo = res.photo;
                     //把当前界面隐藏，并展示菜单界面
-                    window.location.href="http://175.178.119.52/game/";
-                    //outer.hide();
+                    outer.hide();
                     //outer.root.menu.show();
                 }
                 else
