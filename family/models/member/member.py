@@ -19,7 +19,7 @@ class Member(models.Model):
     #mid = models.IntegerField()
 
     #隶属家庭
-    family = models.ForeignKey(Family, on_delete=models.CASCADE)
+    family = models.ForeignKey(Family, on_delete=models.CASCADE, blank=True, null=True)
 
     #展示用户的名字
     def __str__(self):

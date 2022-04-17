@@ -208,7 +208,6 @@ canvas{z-index:-1;position:absolute;}
     color: red;
     font-size: 2vh;
     display: inline;
-    padding-top: 1cm;
     position: relative;
     left: 25%;
 }

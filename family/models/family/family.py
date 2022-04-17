@@ -1,7 +1,7 @@
 #创建数据库表必须要引入的类
 from django.db import models
 from django.contrib.auth.models import User
-from family.models.member.member import Member
+#from family.models.member.member import Member
 
 class Family(models.Model):
     #家庭的名称，字数最多32个字
