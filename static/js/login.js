@@ -78,6 +78,7 @@ class Login
                 else
                 {
                     //登录失败就显示失败信息
+                    console.log(res.result);
                     outer.$login_error_message.html(res.result);
                 }
             }
@@ -112,13 +113,16 @@ class Login
                     //记录传回来的用户名称和头像
                     outer.username = res.username;
                     outer.photo = res.photo;
-                    //把当前界面隐藏，并展示菜单界面
-                    outer.hide();
+                    //跳转回主页
+                    window.location.href="http://175.178.119.52/game/";
+                    //outer.hide();
                     //outer.root.menu.show();
                 }
                 else
                 {
-                    outer.login();
+                    //登录失败，跳转回登录界面
+                    //outer.login();
+                    //window.location.href="http://175.178.119.52/family/login/";
                 }
             }
         });
