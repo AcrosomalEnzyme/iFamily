@@ -10,7 +10,7 @@ class Member(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
 
     #头像是一个链接，最大长度256，可以为空
-    photo = models.URLField(default="http://175.178.119.52/static/image/test.png", max_length = 256, blank = True)
+    photo = models.FileField(upload_to="http://175.178.119.52/static/image/member_photo/", default="http://175.178.119.52/static/image/test.png")
 
     #增加openID，是32位字符串
     #openid = models.CharField(default="", max_length=50, blank=True, null=True)
