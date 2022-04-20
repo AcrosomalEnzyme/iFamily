@@ -15,20 +15,7 @@ def register(request):
     password_confirm = request.POST.get("password_confirm", "").strip()
     photo = request.FILES.get("photo")
 
-    print("test")
-    test = request.POST.get('username')
-    print(username)
-    print(password)
-    print(request.POST)
-    print("test end")
-
-    # 如果用户名或者密码是空的，返回错误
-    if not username or not password:
-        return JsonResponse({
-            'result': "用户名和密码不能为空"
-        })
-
-    # 如果两次密码不一致，返回错误
+    # 返回错误
     if password != password_confirm:
         return JsonResponse({
             'result': "两次密码不一致"
@@ -50,7 +37,7 @@ def register(request):
         # 在member表创建用户
         Member.objects.create(user=user)
         # 在player表创建用户
-        Player.objects.create(user=user, photo="http://175.178.119.52/static/image/member_photo/default_photo.png")
+        Player.objects.create(user=user, photo="http://175.178.119.52/media/image/member_photo/default_photo.png")
     else:
         # 求出文件名后缀，与用户名称拼接
         last_name = str(photo.name).split('.')[-1]
