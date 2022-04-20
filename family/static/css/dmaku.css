@@ -211,3 +211,11 @@ canvas{z-index:-1;position:absolute;}
     position: relative;
     left: 25%;
 }
+#register_error_message
+{
+    color: red;
+    font-size: 2vh;
+    display: inline;
+    position: relative;
+    left: 25%;
+}
