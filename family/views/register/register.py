@@ -58,7 +58,7 @@ def register(request):
         file_name = str(username) + last_name
         photo.name = file_name
         Member.objects.create(user=user, photo=photo)
-        Player.objects.create(user=user, photo="http://175.178.119.52/static/image/member_photo/" + str(photo.name))
+        Player.objects.create(user=user, photo="http://175.178.119.52/media/image/member_photo/" + str(photo.name))
 
 
     # 创建完直接登录
