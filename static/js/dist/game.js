@@ -1664,8 +1664,8 @@ class Settings
         this.root = root;
         //默认是web平台
         this.platform = "WEB";
-        if (this.root.AcWingOS)
-            this.platform = "ACAPP";
+        // if (this.root.AcWingOS)
+        //     this.platform = "ACAPP";
         this.username = "";
         this.photo = "";
 
@@ -1871,7 +1871,7 @@ class Settings
 
         //切换登录界面的监听函数
         this.$register_login.click(function(){
-            outer.login_on_remote();
+            outer.login();
         });
 
         //注册按钮的监听函数

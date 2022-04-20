@@ -5,7 +5,7 @@ class Login
         this.photo = "";
         this.platform = "WEB";
 
-        this.$login = $('.admin_login');
+        this.$login = $(".admin_login");
         this.$login_username = this.$login.find("#login_username");
         this.$login_password = this.$login.find("#login_password");
         this.$login_submit = this.$login.find("#login_submit");

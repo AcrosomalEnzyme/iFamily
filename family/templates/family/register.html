@@ -5,7 +5,8 @@
     <title>iFamily</title>
     <meta name="author" content="DeathGhost"/>
     <link rel="stylesheet" type="text/css" href="../../static/css/dmaku.css"/>
-    <script src="../../static/js/jquery.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <!-- <script src="../../static/js/jquery.js"></script> -->
     <script src="../../static/js/verificationNumbers.js"></script>
     <script src="../../static/js/Particleground.js"></script>
     <script src="../../static/js/register.js"></script>
@@ -24,6 +25,7 @@
 
 <body>
 <dl class="admin_login">
+    {% csrf_token %}
     <dt>
         <strong>iFamily</strong>
         <em>家庭多功能平台</em>
