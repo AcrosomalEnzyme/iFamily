@@ -15,6 +15,13 @@ def register(request):
     password_confirm = request.POST.get("password_confirm", "").strip()
     photo = request.FILES.get("photo")
 
+    print("test")
+    test = request.POST.get('username')
+    print(username)
+    print(password)
+    print(request.POST)
+    print("test end")
+
     # 如果用户名或者密码是空的，返回错误
     if not username or not password:
         return JsonResponse({
@@ -47,6 +54,7 @@ def register(request):
     else:
         # 求出文件名后缀，与用户名称拼接
         last_name = str(photo.name).split('.')[-1]
+        last_name = "." + last_name
         file_name = str(username) + last_name
         photo.name = file_name
         Member.objects.create(user=user, photo=photo)

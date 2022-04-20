@@ -76,9 +76,9 @@ class Register {
         else
             formData.append('photo', null);
 
-        formData.append("csrfmiddlewaretoken",$("[name='csrfmiddlewaretoken']").val());
+        // formData.append("csrfmiddlewaretoken",$("[name='csrfmiddlewaretoken']").val());
 
-        console.log(this.$register_username.val());
+        //console.log(this.$register_username.val());
         for (var [a, b] of formData.entries()) {undefined
                 console.log(a, b);
             }
@@ -88,15 +88,13 @@ class Register {
 
         $.ajax({
             url: "http://175.178.119.52/family/register/register/",
-            //headers: { "X-CSRFtoken":$.cookie("csrftoken")},
+            headers: { "X-CSRFtoken":$.cookie("csrftoken")},
             type: "POST",
-            processData:false,
-            contentType:false,
-            data: {
-                formData,
+            processData: false,
+            contentType: false,
+            data: formData,
                 //csrfmiddlewaretoken: '{{ csrf_token }}',
                 //csrfmiddlewaretoken:$('[name="csrfmiddlewaretoken"]').val(),
-            },
             success: function(res){
                 console.log(res);
                 if(res.result === "success")
