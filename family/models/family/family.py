@@ -5,6 +5,6 @@ from django.contrib.auth.models import User
 
 class Family(models.Model):
     #家庭的名称，字数最多32个字
-    name = models.CharField(max_length=50,verbose_name="家庭名称")
+    family_name = models.CharField(max_length=50,verbose_name="家庭名称")
     #家庭的密码
-    code = models.CharField(max_length=50)
+    family_password = models.CharField(max_length=50)

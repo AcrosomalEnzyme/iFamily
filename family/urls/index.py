@@ -8,5 +8,5 @@ urlpatterns = [
     # path("game/", index, name="index"),
      path("login/", include("family.urls.login.index")),
      path("register/", include("family.urls.register.index")),
-    # path("family/", include("game.urls.settings.index")),
+     path("family/", include("family.urls.family.index")),
 ]
