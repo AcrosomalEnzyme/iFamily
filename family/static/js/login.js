@@ -61,7 +61,7 @@ class Login
         this.$login_error_message.empty();
 
         $.ajax({
-            url: "http://175.178.119.52/game/settings/login/",
+            url: "http://175.178.119.52/family/login/login/",
             type: "GET",
             data: {
                 username: username,
@@ -72,7 +72,7 @@ class Login
                 if (res.result === "success")
                 {
                     //登录成功就刷新网页，
-                    //这样就能通过调用getinfo，加载出菜单界面
+                    //这样就能通过调用getinfo，加载出首页
                     location.reload();
                 }
                 else
@@ -99,7 +99,7 @@ class Login
         let outer = this;
         $.ajax({
             //像相应的链接发送请求
-            url:"http://175.178.119.52/game/settings/getinfo/",
+            url:"http://175.178.119.52/family/login/getinfo/",
             type:"GET",
             data:{
                 platform: outer.platform,

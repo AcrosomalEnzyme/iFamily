@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>iFamily</title>
+    <meta name="author" content="DeathGhost"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/dmaku.css"/>
+    <script src="../../static/js/jquery.js"></script>
+    <script src="../../static/js/verificationNumbers.js"></script>
+    <script src="../../static/js/Particleground.js"></script>
+    <script src="../../static/js/family_create.js"></script>
+    <script>
+        $(document).ready(function () {
+            //粒子背景特效
+            $('body').particleground({
+                dotColor: '#5cbdaa',
+                lineColor: '#5cbdaa'
+            });
+            //验证码
+            //createCode();
+            //测试提交，对接程序删除即可
+            /*
+            $(".submit_btn").click(function () {
+                location.href = "javascrpt:;"/*tpa=http://***index.html/;
+            });
+            */
+
+            let family_create = new Family_create();
+        });
+    </script>
+</head>
+
+<body>
+<dl class="admin_login">
+    <dt>
+        <strong>创建家庭</strong>
+        <em>家庭多功能平台</em>
+    </dt>
+    <dd class="user_icon">
+        <input type="text" placeholder="家庭名称" class="login_txtbx" id="family_name"/>
+    </dd>
+    <dd class="pwd_icon">
+        <input type="password" placeholder="家庭密码" class="login_txtbx" id="family_password_first"/>
+    </dd>
+    <dd class="pwd_icon">
+        <input type="password" placeholder="再次确认家庭密码" class="login_txtbx" id="family_password_second"/>
+    </dd>
+    <dd>
+        <input type="button" value="创建家庭" class="submit_btn" id="family_create_submit"/>
+    </dd>
+    <dd>
+        <input type="button" value="加入已有家庭" class="submit_btn" id="family_create_to_join"/>
+    </dd>
+    <div id="family_create_error_message"></div>
+</dl>
+</body>
+</html>
