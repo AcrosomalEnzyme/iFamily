@@ -16,12 +16,11 @@ def getinfo_web(request):
             })
     else:
         #查找当前用户的信息
-
-        photo_url = user.photo.url()
+        player = Player.objects.get(user=user)
         return JsonResponse({
             'result' : "success",
-            'username' : user.username,
-            'photo' : photo_url,
+            'username' : player.user.username,
+            'photo' : player.photo,
         })
 
 
