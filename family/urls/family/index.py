@@ -12,5 +12,5 @@ urlpatterns = [
     path("family_join_index/", family_join_index, name="family_join_index"),
     path("getinfo/", getinfo, name="getinfo"),
     path("family_create/", family_create, name="family_create"),
-    # path("settings/", include("game.urls.settings.index")),
+
 ]
