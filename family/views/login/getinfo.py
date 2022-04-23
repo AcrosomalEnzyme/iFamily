@@ -2,6 +2,7 @@
 from django.http import JsonResponse
 #添加数据库表
 from game.models.player.player import Player
+from family.models.member.member import Member
 
     #处理web端发来的请求
 def getinfo_web(request):
@@ -16,8 +17,8 @@ def getinfo_web(request):
             })
     else:
         #查找当前用户的信息
-
-        photo_url = user.photo.url()
+        member = Member.objects.filter(user=user).first()
+        photo_url = member.photo.url
         return JsonResponse({
             'result' : "success",
             'username' : user.username,
