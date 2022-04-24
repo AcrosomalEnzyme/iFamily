@@ -100,7 +100,7 @@ class Login
         let outer = this;
         $.ajax({
             //像相应的链接发送请求
-            url:"http://175.178.119.52/family/login/getinfo/",
+            url:"http://175.178.119.52/family/family/getinfo/",
             type:"GET",
             data:{
                 platform: outer.platform,

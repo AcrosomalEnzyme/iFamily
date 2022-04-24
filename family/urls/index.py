@@ -1,5 +1,6 @@
 from django.urls import path, include
 #from family.views.index import index
+from family.views.getinfo import getinfo
 
 # 将其他所有文件夹路径include进来的作用，可以仿造整个项目的urls.py
 # 之后每个文件夹都要创建index.py，内容除了没有include其他都一样
@@ -9,4 +10,5 @@ urlpatterns = [
      path("login/", include("family.urls.login.index")),
      path("register/", include("family.urls.register.index")),
      path("family/", include("family.urls.family.index")),
+     path("getinfo/", getinfo, name="getinfo"),
 ]

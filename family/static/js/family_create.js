@@ -60,7 +60,7 @@ class Family_create {
             url: "http://175.178.119.52/family/family/family_create/",
             type: "GET",
             data: {
-                username: username,
+                username: outer.username,
                 family_name: family_name,
                 family_password: family_password,
                 family_password_confirm: family_password_confirm,
