@@ -3,6 +3,7 @@ from family.views.family.family_create_index import family_create_index
 from family.views.family.family_join_index import family_join_index
 from family.views.login.getinfo import getinfo
 from family.views.family.family_create import family_create
+from family.views.family.family_join import family_join
 
 # 将其他所有文件夹路径include进来的作用，可以仿造整个项目的urls.py
 # 之后每个文件夹都要创建index.py，内容除了没有include其他都一样
@@ -12,5 +13,6 @@ urlpatterns = [
     path("family_join_index/", family_join_index, name="family_join_index"),
     path("getinfo/", getinfo, name="getinfo"),
     path("family_create/", family_create, name="family_create"),
+    path("family_join/", family_join, name="family_join"),
 
 ]

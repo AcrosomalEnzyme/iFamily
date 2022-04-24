@@ -209,7 +209,7 @@ canvas{z-index:-1;position:absolute;}
     font-size: 2vh;
     display: inline;
     position: relative;
-    left: 25%;
+    left: 33%;
 }
 #register_error_message
 {
@@ -217,5 +217,23 @@ canvas{z-index:-1;position:absolute;}
     font-size: 2vh;
     display: inline;
     position: relative;
-    left: 25%;
+    left: 33%;
+}
+
+#family_create_error_message
+{
+    color: red;
+    font-size: 2vh;
+    display: inline;
+    position: relative;
+    left: 33%;
+}
+
+#family_join_error_message
+{
+    color: red;
+    font-size: 2vh;
+    display: inline;
+    position: relative;
+    left: 33%;
 }

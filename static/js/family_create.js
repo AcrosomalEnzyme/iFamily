@@ -6,7 +6,7 @@ class Family_create {
         this.platform = "WEB";
         this.$family_name = $("#family_name");
         this.$family_password = $("#family_password_first");
-        this.$family_password_confirm = $("#family_password_first");
+        this.$family_password_confirm = $("#family_password_second");
         this.$family_create_submit = $("#family_create_submit");
         this.$family_create_to_join = $("#family_create_to_join");
         this.$family_create_error_message = $("#family_create_error_message");
@@ -27,7 +27,7 @@ class Family_create {
         //this.add_listening_events_register();
     }
 
-    //登录界面监听函数
+    //创建家庭界面监听函数
     add_listening_events_family_create() {
         //有click函数都需要定义outer
         let outer = this;
@@ -39,7 +39,7 @@ class Family_create {
 
         //切换加入家庭界面的监听函数
         this.$family_create_to_join.click(function () {
-            outer.family_create_to_join();
+            window.location.href="http://175.178.119.52/family/family/family_join_index/";
         });
     }
 
