@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from family.views.home_index import home_index
 
 urlpatterns = [
     # 将game的url引导过来
@@ -24,6 +25,7 @@ urlpatterns = [
     # 后面如果是menu，（path("menu/", include("game.urls.menu.index")),），就继续往下进入menu文件夹的index去查找，
     # 如果是空的，（path("", index, name="index"),）直接访问views文件夹下的index函数，（return render(request,"multiends/web.html")），
     # 所以会返回template文件夹下的multiends文件夹的web.html
+    path("home/", home_index, name="home_index"),
     path("family/", include("family.urls.index")),
     path("game/", include("game.urls.index")),
     path('admin/', admin.site.urls),
