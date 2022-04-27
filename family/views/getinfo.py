@@ -4,9 +4,7 @@ from django.http import JsonResponse
 from game.models.player.player import Player
 from family.models.member.member import Member
 
-    #处理web端发来的请求
-def getinfo_web(request):
-
+def getinfo(request):
     #获取到发送请求的用户
     user = request.user
 
@@ -24,12 +22,3 @@ def getinfo_web(request):
             'username' : user.username,
             'photo' : photo_url,
         })
-
-
-
-    #处理请求的都要加request
-def getinfo(request):
-    #判断是从哪个平台发过来的
-    platform = request.GET.get('platform')
-    if platform == "WEB":
-        return getinfo_web(request)

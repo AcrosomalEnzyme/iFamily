@@ -34,10 +34,6 @@ def family_join(request):
 
     # 判断密码
     family = Family.objects.filter(family_name=family_name).first()
-    print()
-    print(family.family_password)
-    print(family_password)
-    print()
     if family.family_password != family_password:
         return JsonResponse({
             'result': "家庭密码不正确"

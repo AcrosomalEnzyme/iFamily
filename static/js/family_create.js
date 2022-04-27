@@ -3,7 +3,7 @@ class Family_create {
     constructor() {
         this.username = "";
         this.photo = "";
-        this.platform = "WEB";
+        // this.platform = "WEB";
         this.$family_name = $("#family_name");
         this.$family_password = $("#family_password_first");
         this.$family_password_confirm = $("#family_password_second");
@@ -15,7 +15,7 @@ class Family_create {
 
     start() {
         //从服务器端获取信息
-        this.getinfo_web();
+        this.getinfo();
         //绑定监听函数
         this.add_listening_events();
     }
@@ -84,16 +84,16 @@ class Family_create {
     }
 
     //获取用户是否登录的状态，web端
-    getinfo_web() {
+    getinfo() {
         //console.log("1");
         //为了记录外部的“this”
         let outer = this;
         $.ajax({
             //像相应的链接发送请求
-            url: "http://175.178.119.52/family/family/getinfo/",
+            url: "http://175.178.119.52/family/getinfo/",
             type: "GET",
             data: {
-                platform: outer.platform,
+                // platform: outer.platform,
             },
             success: function (res) {
                 console.log(res);

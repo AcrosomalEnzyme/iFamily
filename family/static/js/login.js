@@ -3,7 +3,7 @@ class Login
     constructor() {
         this.username = "";
         this.photo = "";
-        this.platform = "WEB";
+        // this.platform = "WEB";
 
         this.$login = $(".admin_login");
         this.$login_username = this.$login.find("#login_username");
@@ -18,7 +18,7 @@ class Login
     start()
     {
         //从服务器端获取信息
-        this.getinfo_web();
+        this.getinfo();
         //绑定监听函数
         this.add_listening_events();
     }
@@ -93,17 +93,17 @@ class Login
     }
 
     //获取用户是否登录的状态，web端
-    getinfo_web()
+    getinfo()
     {
         //console.log("1");
         //为了记录外部的“this”
         let outer = this;
         $.ajax({
             //像相应的链接发送请求
-            url:"http://175.178.119.52/family/family/getinfo/",
+            url:"http://175.178.119.52/family/getinfo/",
             type:"GET",
             data:{
-                platform: outer.platform,
+                // platform: outer.platform,
             },
             success: function(res)
             {
@@ -115,7 +115,7 @@ class Login
                     outer.username = res.username;
                     outer.photo = res.photo;
                     //跳转回主页
-                    window.location.href="http://175.178.119.52/game/";
+                    window.location.href="http://175.178.119.52/home/";
                     //outer.hide();
                     //outer.root.menu.show();
                 }

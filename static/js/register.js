@@ -2,7 +2,7 @@ class Register {
     constructor() {
         this.username = "";
         this.photo = "";
-        this.platform = "WEB";
+        // this.platform = "WEB";
 
         //为了沿用模板，所以HTML中还是带有login
         this.$register = $(".admin_login");
