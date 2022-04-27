@@ -28,10 +28,17 @@ class Home {
     }
 
     start() {
+        //更新自己的在线信息
+        this.get_online();
         //从服务器端获取信息
-        this.getinfo_home();
+        // this.getinfo_home();
         // //绑定监听函数
         this.add_listening_events();
+        // this.flag = true;
+
+        // setInterval(this.get_online, 5000);
+        // setInterval(this.getinfo_home, 5000);
+
     }
 
     //统一绑定监听函数
@@ -106,7 +113,7 @@ class Home {
                     member_information +
                     "<tr>" +
                     "<td>" + (i + 1) + "</td>" +
-                    "<div class=\"m-r-10\"><img src=" + member.photo + " alt=\"user\" class=\"rounded\" width=\"45\"></div>" +
+                    "<td>" + "<div class=\"m-r-10\"><img src=" + member.photo + " alt=\"user\" class=\"rounded\" width=\"45\"></div>" + "</td>" +
                     "<td>" + member.username + "</td>" +
                     "<td>" + member.score + "</td>" +
                     "<td><span class=\"badge-dot badge-brand mr-1\"></span>离线</td>"
@@ -114,6 +121,51 @@ class Home {
 
         }
         this.$home_family_card_member.append(member_information);
+    }
+
+
+    //更新自己的在线信息
+    get_online() {
+        let outer = this;
+
+        $.ajax({
+            url: "http://175.178.119.52/family/get_online",
+            type: "GET",
+            data: {},
+            success: function (res) {
+                if (res.result === "success") {
+                    // console.log("success");
+                    //从服务器端获取信息
+                    outer.getinfo_home();
+                    setInterval(function () {
+                        $.ajax({
+                            url: "http://175.178.119.52/family/get_online",
+                            type: "GET",
+                            data: {},
+                            success: function (res) {
+
+                            },
+                            complete: function () {
+                                // Schedule the next request when the current one is complete
+                                // setTimeout(outer.get_online, 5000);
+                            },
+                            error: function (xhr, errmsg, err) {
+                                console.log("error");
+                            }
+                        });
+                    }, 5000);
+
+                }
+
+            },
+            complete: function () {
+                // Schedule the next request when the current one is complete
+                // setTimeout(outer.get_online, 5000);
+            },
+            error: function (xhr, errmsg, err) {
+                console.log("error");
+            }
+        });
     }
 
     //获取登录界面所需信息
@@ -135,14 +187,19 @@ class Home {
                     outer.status = res.status;
                     outer.family_members = res.family_member;
 
+
                     //更新主页信息
                     outer.update_page();
+
+
                 } else {
                     //用户未登录，跳转回登录界面
                     window.location.href = "http://175.178.119.52/family/login/";
                 }
-            }
+            },
         });
 
     }
+
+
 }

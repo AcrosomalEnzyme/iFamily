@@ -17,6 +17,8 @@ class Member(models.Model):
 
     #用户的id
     #mid = models.IntegerField()
+    #最近在线时间
+    last_active_time = models.DateTimeField(auto_now=True)
 
     #隶属家庭
     family = models.ForeignKey(Family, on_delete=models.CASCADE, blank=True, null=True)
