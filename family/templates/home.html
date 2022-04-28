@@ -50,11 +50,86 @@
             </button>
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto navbar-right-top">
-                    <!--                    <li class="nav-item">-->
-                    <!--                        <div id="custom-search" class="top-search-bar">-->
-                    <!--                            <input class="form-control" type="text" placeholder="Search..">-->
-                    <!--                        </div>-->
-                    <!--                    </li>-->
+                    <!--                                        <li class="nav-item">-->
+                    <!--                                            <div id="custom-search" class="top-search-bar">-->
+                    <!--                                                <input class="form-control" type="text" placeholder="Search..">-->
+                    <!--                                            </div>-->
+                    <!--                                        </li>-->
+                    <li class="nav-item dropdown notification">
+                        <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" style="padding-bottom: 25px;padding-top: 26px;">
+                            <i class="fas fa-fw fa-bell"></i>
+                            <span class="indicator" id="home_nav_indicator"></span></a>
+
+                        <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                            <li>
+                                <div class="notification-title"> 消息提示</div>
+                                <div class="slimScrollDiv"
+                                     style="position: relative; overflow: hidden; width: auto; height: 250px;">
+                                    <div class="notification-list"
+                                         style="overflow: hidden; width: auto; height: 250px;">
+                                        <div class="list-group" id="home_nav_list_group">
+                                            <a href="http://175.178.119.52/chat/chat_room" class="list-group-item list-group-item-action active">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img
+                                                            src="http://175.178.119.52/static/page_assets/images/avatar-2.jpg"
+                                                            alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span
+                                                            class="notification-list-user-name">家人名称</span>在群聊中发送了新消息
+                                                        <div class="notification-date">1分钟前</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+<!--                                            <a href="#" class="list-group-item list-group-item-action">-->
+<!--                                                <div class="notification-info">-->
+<!--                                                    <div class="notification-list-user-img"><img-->
+<!--                                                            src="http://175.178.119.52/static/page_assets/images/avatar-3.jpg"-->
+<!--                                                            alt="" class="user-avatar-md rounded-circle"></div>-->
+<!--                                                    <div class="notification-list-user-block"><span-->
+<!--                                                            class="notification-list-user-name">John Abraham </span>is-->
+<!--                                                        now following you-->
+<!--                                                        <div class="notification-date">2 days ago</div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </a>-->
+<!--                                            <a href="#" class="list-group-item list-group-item-action">-->
+<!--                                                <div class="notification-info">-->
+<!--                                                    <div class="notification-list-user-img"><img-->
+<!--                                                            src="http://175.178.119.52/static/page_assets/images/avatar-4.jpg"-->
+<!--                                                            alt="" class="user-avatar-md rounded-circle"></div>-->
+<!--                                                    <div class="notification-list-user-block"><span-->
+<!--                                                            class="notification-list-user-name">Monaan Pechi</span> is-->
+<!--                                                        watching your main repository-->
+<!--                                                        <div class="notification-date">2 min ago</div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </a>-->
+<!--                                            <a href="#" class="list-group-item list-group-item-action">-->
+<!--                                                <div class="notification-info">-->
+<!--                                                    <div class="notification-list-user-img"><img-->
+<!--                                                            src="page_assets/images/avatar-5.jpg" alt=""-->
+<!--                                                            class="user-avatar-md rounded-circle"></div>-->
+<!--                                                    <div class="notification-list-user-block"><span-->
+<!--                                                            class="notification-list-user-name">Jessica Caruso</span>accepted-->
+<!--                                                        your invitation to join the team.-->
+<!--                                                        <div class="notification-date">2 min ago</div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </a>-->
+                                        </div>
+                                    </div>
+                                    <div class="slimScrollBar"
+                                         style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div>
+                                    <div class="slimScrollRail"
+                                         style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                                </div>
+                            </li>
+                            <!--                                <li>-->
+                            <!--                                    <div class="list-footer"> <a href="#">View all notifications</a></div>-->
+                            <!--                                </li>-->
+                        </ul>
+                    </li>
+
                     <li class="nav-item dropdown nav-user">
                         <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false"><img
@@ -136,10 +211,12 @@
                                                 <!--                                                        <a class="nav-link" href="dashboard-influencer.html">Influencer</a>-->
                                                 <!--                                                    </li>-->
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="http://175.178.119.52/family/family/family_join_index/">加入家庭</a>
+                                                    <a class="nav-link"
+                                                       href="http://175.178.119.52/family/family/family_join_index/">加入家庭</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="http://175.178.119.52/family/family/family_create_index/">创建家庭</a>
+                                                    <a class="nav-link"
+                                                       href="http://175.178.119.52/family/family/family_create_index/">创建家庭</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -332,10 +409,12 @@
                                             <!--  <div class="float-right"><a href="#" class="user-avatar-email text-secondary">www.henrybarbara.com</a></div> -->
                                             <div class="user-avatar-address">
                                                 <p class="border-bottom pb-3">
-                                                    <span class=" mb-3 d-xl-inline-block d-block ml-xl-4" id="home_card_family">  我的家庭：</span>
+                                                    <span class=" mb-3 d-xl-inline-block d-block ml-xl-4"
+                                                          id="home_card_family">  我的家庭：</span>
                                                 </p>
                                                 <div class="mt-3">
-                                                    <a href="http://175.178.119.52/stock" class="badge badge-light mr-1">股市信息</a>
+                                                    <a href="http://175.178.119.52/stock"
+                                                       class="badge badge-light mr-1">股市信息</a>
                                                     <a href="http://175.178.119.52/game" class="badge badge-light mr-1">联机游戏</a>
                                                     <a href="http://175.178.119.52/chat" class="badge badge-light mr-1">聊天室</a>
                                                     <a href="#" class="badge badge-light mr-1" id="home_card_logout">退出登录</a>
@@ -373,30 +452,30 @@
                                             </tr>
                                             </thead>
                                             <tbody id="home_family_card_member">
-<!--                                            <tr>-->
-<!--                                                <td>1</td>-->
-<!--                                                <td>-->
-<!--                                                    <div class="m-r-10"><img-->
-<!--                                                            src="http://175.178.119.52/media/image/member_photo/default_photo.png"-->
-<!--                                                            alt="user" class="rounded" width="45">-->
-<!--                                                    </div>-->
-<!--                                                </td>-->
-<!--                                                <td>成员1</td>-->
-<!--                                                <td>1500</td>-->
-<!--                                                <td><span class="badge-dot badge-brand mr-1"></span>离线</td>-->
-<!--                                            </tr>-->
-<!--                                            <tr>-->
-<!--                                                <td>2</td>-->
-<!--                                                <td>-->
-<!--                                                    <div class="m-r-10"><img-->
-<!--                                                            src="http://175.178.119.52/media/image/member_photo/default_photo.png"-->
-<!--                                                            alt="user" class="rounded" width="45">-->
-<!--                                                    </div>-->
-<!--                                                </td>-->
-<!--                                                <td>成员2</td>-->
-<!--                                                <td>1500</td>-->
-<!--                                                <td><span class="badge-dot badge-success mr-1"></span>在线</td>-->
-<!--                                            </tr>-->
+                                            <!--                                            <tr>-->
+                                            <!--                                                <td>1</td>-->
+                                            <!--                                                <td>-->
+                                            <!--                                                    <div class="m-r-10"><img-->
+                                            <!--                                                            src="http://175.178.119.52/media/image/member_photo/default_photo.png"-->
+                                            <!--                                                            alt="user" class="rounded" width="45">-->
+                                            <!--                                                    </div>-->
+                                            <!--                                                </td>-->
+                                            <!--                                                <td>成员1</td>-->
+                                            <!--                                                <td>1500</td>-->
+                                            <!--                                                <td><span class="badge-dot badge-brand mr-1"></span>离线</td>-->
+                                            <!--                                            </tr>-->
+                                            <!--                                            <tr>-->
+                                            <!--                                                <td>2</td>-->
+                                            <!--                                                <td>-->
+                                            <!--                                                    <div class="m-r-10"><img-->
+                                            <!--                                                            src="http://175.178.119.52/media/image/member_photo/default_photo.png"-->
+                                            <!--                                                            alt="user" class="rounded" width="45">-->
+                                            <!--                                                    </div>-->
+                                            <!--                                                </td>-->
+                                            <!--                                                <td>成员2</td>-->
+                                            <!--                                                <td>1500</td>-->
+                                            <!--                                                <td><span class="badge-dot badge-success mr-1"></span>在线</td>-->
+                                            <!--                                            </tr>-->
                                             </tbody>
                                         </table>
                                     </div>

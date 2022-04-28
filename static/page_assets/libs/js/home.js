@@ -7,6 +7,10 @@ class Home {
         this.family_members = [];
 
         this.$home = $(".dashboard-main-wrapper");
+        //提示消息小红点
+        this.$home_nav_indicator = this.$home.find("#home_nav_indicator");
+        //消息提示框
+        this.$home_nav_list_group = this.$home.find("#home_nav_list_group");
         //菜单栏：用户头像、用户名、登出按钮
         this.$home_nav_photo = this.$home.find("#home_nav_photo");
         this.$home_nav_username = this.$home.find("#home_nav_username");
@@ -28,6 +32,9 @@ class Home {
     }
 
     start() {
+        //隐藏提示消息小红点和消息提示框
+        this.$home_nav_indicator.hide();
+        this.$home_nav_list_group.hide();
         //更新自己的在线信息
         this.get_online();
         //从服务器端获取信息

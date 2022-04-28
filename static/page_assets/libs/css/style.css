@@ -1498,7 +1498,6 @@ Top Header
     border: 0;
     font-size: 13px;
     line-height: 0.4;
-    cursor: pointer;
 }
 
 .nav-user-dropdown .dropdown-item:hover {

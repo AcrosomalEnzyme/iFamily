@@ -39,6 +39,7 @@ ALLOWED_HOSTS = ["175.178.119.52","127.0.0.1","app1881.iFamily.acwing.com.cn"]
 # 'game.apps.GameConfig',
 # 对数据库有影响
 INSTALLED_APPS = [
+    'stock.apps.StockConfig',
     'family.apps.FamilyConfig',
     'channels',
     'game.apps.GameConfig',
