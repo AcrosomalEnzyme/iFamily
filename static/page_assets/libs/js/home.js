@@ -31,6 +31,7 @@ class Home {
         //更新自己的在线信息
         this.get_online();
         //从服务器端获取信息
+        this.getinfo();
         // this.getinfo_home();
         // //绑定监听函数
         this.add_listening_events();
@@ -105,7 +106,7 @@ class Home {
                     "<td>" + "<div class=\"m-r-10\"><img src=" + member.photo + " alt=\"user\" class=\"rounded\" width=\"45\"></div>" + "</td>" +
                     "<td>" + member.username + "</td>" +
                     "<td>" + member.score + "</td>" +
-                    "<td><span class=\"badge-dot badge-success mr-1\"></span>在线</td>"
+                    "<td " + "id=\"" + member.username + "\"" + "><span class=\"badge-dot badge-success mr-1\"></span>在线</td>"
             }
             //如果是离线状态
             else {
@@ -116,7 +117,7 @@ class Home {
                     "<td>" + "<div class=\"m-r-10\"><img src=" + member.photo + " alt=\"user\" class=\"rounded\" width=\"45\"></div>" + "</td>" +
                     "<td>" + member.username + "</td>" +
                     "<td>" + member.score + "</td>" +
-                    "<td><span class=\"badge-dot badge-brand mr-1\"></span>离线</td>"
+                    "<td " + "id=\"" + member.username + "\"" + "><span class=\"badge-dot badge-brand mr-1\" ></span>离线</td>"
             }
 
         }
@@ -134,15 +135,35 @@ class Home {
             data: {},
             success: function (res) {
                 if (res.result === "success") {
-                    // console.log("success");
-                    //从服务器端获取信息
+
+                    //第一次更新成功，从服务器端获取信息，渲染网页
                     outer.getinfo_home();
+                    //每隔5秒更新自己信息，然后获取其他人在线状态并渲染
                     setInterval(function () {
                         $.ajax({
                             url: "http://175.178.119.52/family/get_online",
                             type: "GET",
                             data: {},
                             success: function (res) {
+                                // console.log(res);
+                                if (!res.family_name)
+                                    return 0;
+                                let family_members = res.family_member;
+                                let member_information = "";
+                                //加入家庭成员列表
+                                for (let i = 0; i < family_members.length; i++) {
+                                    let member = family_members[i];
+                                    let $tag_td = outer.$home.find("#" + member.username);
+                                    // $tag_td.text('aaaa');
+                                    $tag_td.empty();
+                                    //根据在线状态进行更新
+                                    if (member.status) {
+                                        $tag_td.append("<span class=\"badge-dot badge-success mr-1\"></span>在线");
+                                    } else {
+                                        $tag_td.append("<span class=\"badge-dot badge-brand mr-1\"></span>离线");
+                                    }
+                                }
+
 
                             },
                             complete: function () {
@@ -178,7 +199,7 @@ class Home {
             type: "GET",
             data: {},
             success: function (res) {
-                console.log(res);
+                // console.log(res);
                 if (res.result === "success") {
                     //记录传回来的用户名称和头像
                     outer.username = res.username;
@@ -201,5 +222,36 @@ class Home {
 
     }
 
+    //获取用户是否登录的状态，web端
+    getinfo() {
+        //console.log("1");
+        //为了记录外部的“this”
+        let outer = this;
+        $.ajax({
+            //像相应的链接发送请求
+            url: "http://175.178.119.52/family/getinfo/",
+            type: "GET",
+            data: {
+                // platform: outer.platform,
+            },
+            success: function (res) {
+                // console.log(res);
+                if (res.result === "success") {
+                    //console.log("1");
+                    //记录传回来的用户名称和头像
+                    outer.username = res.username;
+                    outer.photo = res.photo;
+                    //跳转回主页
+                    // window.location.href = "http://175.178.119.52/home/";
+                    //outer.hide();
+                    //outer.root.menu.show();
+                } else {
+                    //登录失败，跳转回登录界面
+                    //outer.login();
+                    window.location.href = "http://175.178.119.52/family/login/";
+                }
+            }
+        });
+    }
 
 }
