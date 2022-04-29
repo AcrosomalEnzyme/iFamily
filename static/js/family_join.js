@@ -65,7 +65,7 @@ class Family_join {
                 //console.log(res);
                 if (res.result === "success") {
                     //加入家庭成功就加载出首页
-                    window.location.href = "http://175.178.119.52/game/";
+                    window.location.href = "http://175.178.119.52/home/";
                     // location.reload();
                 } else {
                     //创建家庭失败就显示失败信息

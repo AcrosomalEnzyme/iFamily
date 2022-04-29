@@ -13,8 +13,8 @@ def getinfo_home(request):
     # 获取到发送请求的用户
     user = request.user
 
-    print("test username")
-    print(user.username)
+    # print("test username")
+    # print(user.username)
 
     # 利用内置函数判断用户是否登录
     if not user.is_authenticated:
