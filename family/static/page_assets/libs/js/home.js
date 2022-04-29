@@ -181,7 +181,7 @@ class Home {
                                 console.log("error");
                             }
                         });
-                    }, 5000);
+                    }, 10000);
 
                 }
 
