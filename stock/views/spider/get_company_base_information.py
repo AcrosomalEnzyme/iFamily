@@ -1,26 +1,30 @@
-# -*- coding: utf-8 -*-g
-# @Time : 2020/12/7 22:21
-# @Author : Blink_Leo
-# @File : spider_allcom.py
-# @Software: PyCharm
-
-# import pymysql
 from bs4 import BeautifulSoup  # 网页解析，获取数据
 import re  # 正则表达式，进行文字匹配
 import urllib.request, urllib.error  # 制定URL，获取网页数据
-# import xlwt  # 进行excel操作
-
-# db = pymysql.connect(host='localhost', user='root', password='123', database='work')
-
-# cursor = db.cursor()
-
-# sql = '''
-#             insert into company_base values (%s,%s,%s,%s,%s)
-#         '''
-# place = "-1"
+from stock.models.CompanyBaseInformation import CompanyBaseInformation
+from django.http import JsonResponse
 
 
-# 得到指定一个URL的网页内容
+# import stock.models.CompanyBaseInformation
+
+
+def check_place(company_id):
+    place = ""
+    one = company_id[0:1]
+    three = company_id[0:3]
+    # 为了配合选股宝，所以改成SS表示上海
+    if (one == "5" or one == "6" or one == "9"):
+        place = "SS"
+        return place
+    else:
+        if (three == "009" or three == "126" or three == "110" or three == "201" or three == "202" or three == "203" or three == "204"):
+            place = "SS"
+            return place
+        else:
+            place = "SZ"
+            return place
+
+
 def askURL(url):
     # 模拟浏览器头部信息
     head = {
@@ -43,6 +47,13 @@ def askURL(url):
 
 
 def getData(baseurl):
+    global company_id, simple_name, name, eng_id, place
+    company_id = ""
+    simple_name = ""
+    name = ""
+    eng_id = ""
+    place = ""
+    company_id = ""
     url = baseurl
     html = askURL(url)  # 保存获取到的网页源码
 
@@ -63,18 +74,19 @@ def getData(baseurl):
         # print(item.string)
 
     # 删除前6条数据
-    list=list[6:]
+    list = list[6:]
     # print(list)
     # for i in range(0, 6):
-        # print(i)
-        # print(list[i])
-        # 删除前6条数据
-        # del list[0]
+    # print(i)
+    # print(list[i])
+    # 删除前6条数据
+    # del list[0]
 
     # 按倍数提取数据
     for item in range(len(list)):
+
         if item % 5 == 1:
-            id = list[item]
+            company_id = list[item]
 
         if item % 5 == 2:
             simple_name = list[item]
@@ -87,16 +99,25 @@ def getData(baseurl):
             # print(eng_id)
 
             # db.ping(reconnect=True)
-            # place = check_place(id)
-            # cursor.execute(sql, [id, simple_name, name, eng_id, place])
-            # db.commit()
 
+
+            place = check_place(company_id)
+        # cursor.execute(sql, [company_id, simple_name, name, eng_id, place])
+        # db.commit()
+        # 必须放在if后面执行插入数据库，表示收集到一套完整的股票数据
+            CompanyBaseInformation.objects.create(company_id=company_id, simple_name=simple_name, name=name, eng_id=eng_id, place=place)
     # print("ok1")
 
     return 0
 
 
 def getData2(baseurl1, baseurl3):
+    global company_id, simple_name, name, eng_id, place
+    company_id = ""
+    simple_name = ""
+    name = ""
+    eng_id = ""
+    place = ""
     for x in range(2, 186):
         url = baseurl1 + str(x) + baseurl3
         html = askURL(url)  # 保存获取到的网页源码
@@ -112,13 +133,13 @@ def getData2(baseurl1, baseurl3):
         # 删除前6条数据
         list = list[6:]
         # for i in range(0, 6):
-            # print(list[i])
-            # del list[0]
+        # print(list[i])
+        # del list[0]
 
         for item in range(len(list)):
             if item % 5 == 1:
-                id = list[item]
-                # print(id)
+                company_id = list[item]
+                # print(company_id)
 
             if item % 5 == 2:
                 simple_name = list[item]
@@ -131,16 +152,20 @@ def getData2(baseurl1, baseurl3):
                 # print(eng_id)
 
                 # db.ping(reconnect=True)
-                # place = check_place(id)
-                # cursor.execute(sql, [id, simple_name, name, eng_id, place])
-                # db.commit()
+                place = check_place(company_id)
+                # print(place)
+                CompanyBaseInformation.objects.create(company_id=company_id, simple_name=simple_name, name=name,
+                                                      eng_id=eng_id, place=place)
+
+            # cursor.execute(sql, [company_id, simple_name, name, eng_id, place])
+            # db.commit()
 
         # print(x)
 
     return 0
 
 
-def main():
+def get_company_base_information(request):
     baseurl = "http://www.yz21.org/stock/info/"
 
     baseurl1 = "http://www.yz21.org/stock/info/stocklist_"
@@ -149,41 +174,13 @@ def main():
     # 1.爬取网页
     datalist = getData(baseurl)
     datalist = getData2(baseurl1, baseurl3)
-
-    # sql_change1 = '''
-    #         update company_base set simple_name='青岛中程',name='青岛中资中程集团股份有限公司',eng_id='QDZC' where id='300208';
-    #     '''
-    # sql_change2 = '''
-    #         update company_base set simple_name='*ST舜喆B',name='广东舜喆(集团)股份有限公司',eng_id='STSZB' where id='200168';
-    #     '''
-    # sql_change3 = '''
-    #         update company_base set simple_name='昇兴股份',name='昇兴集团股份有限公司',eng_id='SXGF' where id='002752';
-    #     '''
-    # db.ping(reconnect=True)
-    # cursor.execute(sql_change1)
-    # cursor.execute(sql_change2)
-    # cursor.execute(sql_change3)
-    # db.commit()
-
-
-def check_place(id):
-    place = ""
-    one = id[0:1]
-    three = id[0:3]
-    if (one == "5" or one == "6" or one == "9"):
-        place = "SS"
-        return place
-    else:
-        if (
-                three == "009" or three == "126" or three == "110" or three == "201" or three == "202" or three == "203" or three == "204"):
-            place = "SS"
-            return place
-        else:
-            place = "SZ"
-            return place
-
-
-if __name__ == "__main__":  # 当程序执行时
-    # 调用函数
-    main()
+    # update company_base set simple_name='青岛中程',name='青岛中资中程集团股份有限公司',eng_id='QDZC' where id='300208';
+    #             update company_base set simple_name='*ST舜喆B',name='广东舜喆(集团)股份有限公司',eng_id='STSZB' where id='200168';
+    #             update company_base set simple_name='昇兴股份',name='昇兴集团股份有限公司',eng_id='SXGF' where id='002752';
+    CompanyBaseInformation.objects.filter(company_id='300208').update(simple_name='青岛中程',name='青岛中资中程集团股份有限公司',eng_id='QDZC')
+    CompanyBaseInformation.objects.filter(company_id='200168').update(simple_name='*ST舜喆B', name='广东舜喆(集团)股份有限公司',eng_id='STSZB')
+    CompanyBaseInformation.objects.filter(company_id='002752').update(simple_name='昇兴股份', name='昇兴集团股份有限公司',eng_id='SXGF')
     print("爬取完毕！")
+    return JsonResponse({
+        'result': "success"
+    })

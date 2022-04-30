@@ -28,6 +28,7 @@ urlpatterns = [
     path("home/", home_index, name="home_index"),
     path("family/", include("family.urls.index")),
     path("game/", include("game.urls.index")),
+    path("stock/", include("stock.urls.index")),
     path('admin/', admin.site.urls),
 ] 
 #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
