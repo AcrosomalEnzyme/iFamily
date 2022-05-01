@@ -81,6 +81,49 @@ class Stock_base {
 
     //查找股票的函数
     stock_search() {
+        var text = document.getElementById("search_text");
+        let outer = this;
+        let username = this.username;
+        let search_kind = 0;
+        let search_information = this.$stock_search_text.val();
+
+        if (this.IsNum(search_information)) {
+            if (search_information.length != 6) {
+                alert("查找格式不符合！需要6位数字代码");
+                return 0;
+            }
+            //表示查找的类型为数字代码
+            search_kind = 1;
+        } else if (this.IsAlphabet(search_information)) {
+            if (search_information.length != 4) {
+                alert("查找格式不符合！需要四个英文字母");
+                return 0;
+            }
+
+            //表示查找的类型为字母代码
+            search_kind = 2;
+        } else {
+            //表示查找的类型为中文代码
+            search_kind = 3;
+        }
+
+        window.location.href = `http://175.178.119.52/stock/company_detail/?username=${username}&search_kind=${search_kind}&search_information=${search_information}`;
+        //  $.ajax({
+        //     //像相应的链接发送请求
+        //     url: "http://175.178.119.52/stock/company_detail/",
+        //     type: "GET",
+        //     data: {
+        //
+        //     },
+        //     success: function (res) {
+        //         // console.log(res);
+        //         if (res.result === "success") {
+        //             //记录传回来的用户名称和头像
+        //
+        //         }
+        //     },
+        // });
+
         return 0;
     }
 
@@ -196,5 +239,17 @@ class Stock_base {
                 console.log("error");
             }
         });
+    }
+
+    //判断是不是数字
+    IsNum(num) {
+        let reNum = /^\d*$/;
+        return (reNum.test(num));
+    }
+
+    //判断是不是字母
+    IsAlphabet(alp) {
+        let reAlp = /[a-z]/i;
+        return (reAlp.test(alp));
     }
 }

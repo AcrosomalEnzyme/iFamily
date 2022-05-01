@@ -12,16 +12,11 @@ class Member(models.Model):
     # 头像是一个链接，最大长度256，可以为空
     photo = models.FileField(upload_to="image/member_photo/", default="image/member_photo/default_photo.png")
 
-    # 增加openID，是32位字符串
-    # openid = models.CharField(default="", max_length=50, blank=True, null=True)
-
-    # 用户的id
-    # mid = models.IntegerField()
     # 最近在线时间
     last_active_time = models.DateTimeField(auto_now=True)
 
     # 存储自选股票
-    # stock_code = models.CharField(default="")
+    # stock_code = models.FileField(upload_to="txt/member_stock/", default="txt/member_stock/default_member_stock.txt")
 
     # 隶属家庭
     family = models.ForeignKey(Family, on_delete=models.CASCADE, blank=True, null=True)

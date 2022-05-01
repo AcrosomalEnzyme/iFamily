@@ -50,10 +50,10 @@ def getinfo_home(request):
             # 查找player表获取得分
             score = Player.objects.filter(user=user).first().score
 
-            print()
-            print(i.user.username)
-            print(localtime(i.last_active_time))
-            print()
+            # print()
+            # print(i.user.username)
+            # print(localtime(i.last_active_time))
+            # print()
 
             # 确认是否在线
             time_difference = localtime(now()) - localtime(i.last_active_time)

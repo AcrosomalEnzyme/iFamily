@@ -32,13 +32,13 @@ class Plate_down {
                     html = html + "<li class=\"traffic-sales-content list-group-item \"><span\n" +
                         "class=\"traffic-sales-name\">" + id + " &nbsp &nbsp" + "</span><span\n" +
                         "class=\"traffic-sales-name\">   " + plate_name + "   </span><span\n" +
-                        "class=\"icon-circle-small icon-box-xs text-danger ml-4 bg-danger-light\"><i\n" +
+                        "class=\"icon-circle-small icon-box-xs text-success ml-4 bg-success-light\"><i\n" +
                         "class=\"fa fa-fw fa-arrow-down\"></i></span><span\n" +
-                        "class=\"ml-1 text-danger\">" + plate_change_percent + "</span></span><span\n" +
+                        "class=\"ml-1 text-success\">" + plate_change_percent + "</span></span><span\n" +
                         "class=\"traffic-sales-amount\">代表公司：" + simple_name + "&nbsp" + company_id + "  <span\n" +
-                        "class=\"icon-circle-small icon-box-xs text-danger ml-4 bg-danger-light\"><i\n" +
+                        "class=\"icon-circle-small icon-box-xs text-success ml-4 bg-success-light\"><i\n" +
                         "class=\"fa fa-fw fa-arrow-down\"></i></span><span\n" +
-                        "class=\"ml-1 text-danger\">" + company_change_percent + "</span></span>\n" +
+                        "class=\"ml-1 text-success\">" + company_change_percent + "</span></span>\n" +
                         "</li>"
 
                 }
@@ -73,13 +73,13 @@ class Plate_down {
                                 html = html + "<li class=\"traffic-sales-content list-group-item \"><span\n" +
                                     "class=\"traffic-sales-name\">" + id + " &nbsp &nbsp" + "</span><span\n" +
                                     "class=\"traffic-sales-name\">   " + plate_name + "   </span><span\n" +
-                                    "class=\"icon-circle-small icon-box-xs text-danger ml-4 bg-danger-light\"><i\n" +
+                                    "class=\"icon-circle-small icon-box-xs text-success ml-4 bg-success-light\"><i\n" +
                                     "class=\"fa fa-fw fa-arrow-down\"></i></span><span\n" +
-                                    "class=\"ml-1 text-danger\">" + plate_change_percent + "</span></span><span\n" +
+                                    "class=\"ml-1 text-success\">" + plate_change_percent + "</span></span><span\n" +
                                     "class=\"traffic-sales-amount\">代表公司：" + simple_name + "&nbsp" + company_id + "  <span\n" +
-                                    "class=\"icon-circle-small icon-box-xs text-danger ml-4 bg-danger-light\"><i\n" +
+                                    "class=\"icon-circle-small icon-box-xs text-success ml-4 bg-success-light\"><i\n" +
                                     "class=\"fa fa-fw fa-arrow-down\"></i></span><span\n" +
-                                    "class=\"ml-1 text-danger\">" + company_change_percent + "</span></span>\n" +
+                                    "class=\"ml-1 text-success\">" + company_change_percent + "</span></span>\n" +
                                     "</li>"
 
                             }
