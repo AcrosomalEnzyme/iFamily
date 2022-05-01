@@ -527,8 +527,7 @@
 
                                             <tr>
                                                 <td colspan="19">
-                                                    <a class="btn btn-outline-light float-right" id="select"
-                                                       onclick="select()">
+                                                    <a class="btn btn-outline-light float-right" id="select">
                                                         加入自选股
                                                     </a>
                                                 </td>
@@ -542,29 +541,12 @@
 
                     </div>
 
-                    <div class="row">
 
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="card">
-                                <div id="container" style="width: 95%;height:800px;margin: 0 auto"></div>
-                            </div>
-                        </div>
-
-
-                    </div>
 
 
                 </div>
                 <!--                第三行-->
-                <table border=1 id="a">
 
-                    <tr>
-
-
-                    </tr>
-
-
-                </table>
                 <!-- ============================================================== -->
                 <!-- footer -->
                 <!-- ============================================================== -->
@@ -631,16 +613,18 @@
 <script src="{% static 'js/stock/company_detail.js' %}"></script>
 <script src="{% static 'js/stock/stock_base.js' %}"></script>
 <script src="{% static 'js/stock/echarts.js' %}"></script>
-<!--获取后端传递的股票代码，上下两种写法都行-->
-<script type="text/javascript">
-    // var company_id={{company_id}};
-</script>
+
+
 <script>
+    var dom = document.getElementById("container");
+    var myChart = echarts.init(dom);
     $(document).ready(function () {
         let stock_base = new Stock_base();
+        <!--获取后端传递的股票代码-->
         let simple_name = "{{simple_name}}";
         let place = "{{place}}";
         let company_id = "{{company_id}}";
+
         let company_detail = new Company_detail(company_id, place, simple_name);
     });
 </script>
