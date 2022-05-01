@@ -21,6 +21,7 @@ class Member(models.Model):
     last_active_time = models.DateTimeField(auto_now=True)
 
     # 存储自选股票
+    # stock_code = models.CharField(default="")
 
     # 隶属家庭
     family = models.ForeignKey(Family, on_delete=models.CASCADE, blank=True, null=True)

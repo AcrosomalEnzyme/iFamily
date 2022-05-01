@@ -145,7 +145,7 @@ class Home {
 
                     //第一次更新成功，从服务器端获取信息，渲染网页
                     outer.getinfo_home();
-                    //每隔5秒更新自己信息，然后获取其他人在线状态并渲染
+                    //每隔10秒更新自己信息，然后获取其他人在线状态并渲染
                     setInterval(function () {
                         $.ajax({
                             url: "http://175.178.119.52/family/get_online",
@@ -196,7 +196,7 @@ class Home {
         });
     }
 
-    //获取登录界面所需信息
+    //获取渲染界面所需信息
     getinfo_home() {
         //为了记录外部的“this”
         let outer = this;
