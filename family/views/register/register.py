@@ -33,9 +33,16 @@ def register(request):
     user.set_password(password)
     user.save()
 
+    # test
+    file_name = "media/txt/member_stock/"+ username + ".txt"
+    file = open(file_name,"w")
+    file.close()
+    file_name = "txt/member_stock/" + username + ".txt"
+    # test end
+
     if not photo:
         # 在member表创建用户
-        Member.objects.create(user=user)
+        Member.objects.create(user=user,stock_code=file_name)
         # 在player表创建用户
         Player.objects.create(user=user, photo="http://175.178.119.52/media/image/member_photo/default_photo.png")
     else:
@@ -45,7 +52,7 @@ def register(request):
         file_name = str(username) + last_name
         photo.name = file_name
         Member.objects.create(user=user, photo=photo)
-        Player.objects.create(user=user, photo="http://175.178.119.52/media/image/member_photo/" + str(photo.name))
+        Player.objects.create(user=user,stock_code=file_name, photo="http://175.178.119.52/media/image/member_photo/" + str(photo.name))
 
 
     # 创建完直接登录

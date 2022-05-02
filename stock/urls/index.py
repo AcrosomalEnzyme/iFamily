@@ -11,11 +11,14 @@ from stock.views.my_select_index import my_select_index
 from stock.views.company_detail_index import company_detail_index
 from stock.views.company_detail_information import company_detail_information
 from stock.views.select import select
+from stock.views.my_select_information import get_my_companys, get_my_select_information
 
 # 将其他所有文件夹路径include进来的作用，可以仿造整个项目的urls.py
 # 之后每个文件夹都要创建index.py，内容除了没有include其他都一样
 urlpatterns = [
     # 第一个是直接添加主页的url，信息已经足够，不需要定位到具体文件夹继续往下查找
+    path("get_my_companys/", get_my_companys, name="get_my_companys"),
+    path("get_my_select_information/", get_my_select_information, name="get_my_select_information"),
     path("select/", select, name="select"),
     path("company_detail_information/", company_detail_information, name="company_detail_information"),
     path("company_detail/", company_detail_index, name="company_detail_index"),

@@ -141,8 +141,6 @@ class Company_detail {
                     var html = "";
 
 
-
-
                     html = company_id + " " + simple_name;
                     $("#base_infor").empty();
                     $("#base_infor").html(html);
@@ -249,8 +247,6 @@ class Company_detail {
                     });
 
 
-
-
                     $(function change() {
 
                         var html = "";
@@ -324,26 +320,41 @@ class Company_detail {
 
 
     //统一绑定监听函数
-    add_listening_events()
-    {
+    add_listening_events() {
         let outer = this;
         //this.add_listening_events_login();
         this.add_listening_events_company_detail_information();
     }
 
     //股票详情界面的监听函数
-    add_listening_events_company_detail_information()
-    {
+    add_listening_events_company_detail_information() {
         let outer = this;
 
         //加入自选股的监听函数
-        this.$select.click(function(){
+        this.$select.click(function () {
             outer.select();
         });
 
     }
 
-    select(){
+    select() {
+        $.ajax({
+            url: "http://175.178.119.52/stock/select/",
+            type: "GET",
+            data: {
+                "company_id": this.company_id,
+            },
+            success: function (res) {
+                //console.log(res);
+                if (res.result === "success") {
+                    //登录成功就刷新网页，
+                    //这样就能通过调用getinfo，加载出首页
+                    //location.reload();
+                    // window.location.href="http://175.178.119.52/home/";
+                }
+            }
+        });
+
     }
 
 
