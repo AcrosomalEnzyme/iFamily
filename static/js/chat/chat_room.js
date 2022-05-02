@@ -6,15 +6,15 @@ class Chat_room{
         // this.status = true;
         this.family_members = [];
 
-        this.$stock = $(".dashboard-main-wrapper");
+        this.$chat_room = $(".dashboard-main-wrapper");
         //提示消息小红点
-        this.$home_nav_indicator = this.$stock.find("#home_nav_indicator");
+        this.$home_nav_indicator = this.$chat_room.find("#home_nav_indicator");
         //消息提示框
-        this.$home_nav_list_group = this.$stock.find("#home_nav_list_group");
+        this.$home_nav_list_group = this.$chat_room.find("#home_nav_list_group");
         //菜单栏：用户头像、用户名、登出按钮
-        this.$home_nav_photo = this.$stock.find("#home_nav_photo");
-        this.$home_nav_username = this.$stock.find("#home_nav_username");
-        this.$home_nav_logout = this.$stock.find("#home_nav_logout");
+        this.$home_nav_photo = this.$chat_room.find("#home_nav_photo");
+        this.$home_nav_username = this.$chat_room.find("#home_nav_username");
+        this.$home_nav_logout = this.$chat_room.find("#home_nav_logout");
 
         this.start();
     }
@@ -32,10 +32,6 @@ class Chat_room{
         this.getinfo_home();
         // //绑定监听函数
         this.add_listening_events();
-        // this.flag = true;
-
-        // setInterval(this.get_online, 5000);
-        // setInterval(this.getinfo_home, 5000);
 
     }
 
@@ -118,6 +114,7 @@ class Chat_room{
             success: function (res) {
                 // console.log(res);
                 if (res.result === "success") {
+                    // console.log(res);
                     //记录传回来的用户名称和头像
                     outer.username = res.username;
                     outer.photo = res.photo;

@@ -55,12 +55,7 @@
                     <!--                                                <input class="form-control" type="text" placeholder="Search..">-->
                     <!--                                            </div>-->
                     <!--                                        </li>-->
-                    <div id="custom-search" class="top-search-bar">
-                        <input id="stock_search_text" class="form-control" type="text" placeholder="请输入股票信息...">
-                    </div>
-                    <div class="top-search-bar">
-                        <input id="stock_search_btn" class="form-control" type="button" value="查询股票">
-                    </div>
+
                     <li class="nav-item dropdown notification">
                         <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false" style="padding-bottom: 20px; padding-top: 20px;">
@@ -381,18 +376,8 @@
             <div class="content-container">
                 <div class="chat-module">
                     <div class="chat-module-top">
-                        <form>
-                            <div class="input-group input-group-round">
-                                <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-search"></i>
-                                        </span>
-                                </div>
-                                <input type="search" class="form-control filter-list-input" placeholder="Search chat"
-                                       aria-label="Search Chat">
-                            </div>
-                        </form>
-                        <div class="chat-module-body">
+
+                        <div class="chat-module-body" id="history">
                             <div class="media chat-item">
                                 <img alt="William" src="../page_assets/images/avatar-1.jpg"
                                      class="rounded-circle user-avatar-lg">
@@ -425,20 +410,11 @@
                         </div>
                     </div>
                     <div class="chat-module-bottom">
-                        <form class="chat-form">
-                            <textarea class="form-control" placeholder="Type message" rows="1"></textarea>
-                            <div class="chat-form-buttons">
-                                <button type="button" class="btn btn-link">
-                                    <i class="far fa-smile"></i>
-                                </button>
-                                <div class="custom-file custom-file-naked">
-                                    <input type="file" class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile">
-                                        <i class="fas fa-paperclip"></i>
-                                    </label>
-                                </div>
-                            </div>
-                        </form>
+<!--                        <form class="chat-form" id="message_field">-->
+
+                            <input id="message" class="form-control" type="text" placeholder="按下回车发送信息">
+<!--                            <textarea class="form-control" placeholder="输入信息" rows="1" id="message"></textarea>-->
+<!--                        </form>-->
                     </div>
                 </div>
                 <div class="chat-sidebar collapse" id="sidebar-collapse">
@@ -1153,10 +1129,11 @@
 <!--<script src="../static/page_assets/libs/js/jquery.js"></script>-->
 <script src="{% static 'page_assets/libs/js/jquery.js' %}"></script>
 <script src="{% static 'js/chat/chat_room.js' %}"></script>
-
+<script src="{% static 'js/chat/chat_room_websocket.js' %}"></script>
 <script>
     $(document).ready(function () {
         let chat_room = new Chat_room();
+        let chat_room_websocket = new Chat_room_websocket();
     });
 </script>
 </body>
