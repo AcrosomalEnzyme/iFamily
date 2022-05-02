@@ -82,7 +82,7 @@ class My_select {
         let html2 = "";
         let html3 = "";
 
-        console.log(my_companys);
+
         $.ajax({
             type: "GET",
             url: "http://175.178.119.52/stock/get_my_select_information/",
@@ -95,38 +95,37 @@ class My_select {
 
                 let data = result['data'];
                 console.log(data);
-                return 0;
                 let length = data.length;
 
                 //改写网页内容
                 html = "";
                 html2 = "";
                 html3 = "";
-                for (var i = 0; i < length; i++) {
-                    company_id = data[i][0];
-                    simple_name = data[i][1];
-                    trade_status = data[i][2];
-                    update_time = data[i][3];
-                    price_tem = data[i][4];
-                    change_ = data[i][5];
-                    change_percent = data[i][6];
-                    closing_price = data[i][7];
-                    opening_price = data[i][8];
-                    highest = data[i][9];
-                    lowest = data[i][10];
-                    amplitude = data[i][11];
-                    turnover_ratio = data[i][12];
-                    PER = data[i][13];
-                    dynamic_PER = data[i][14];
-                    PBR = data[i][15];
-                    market_value = data[i][16];
-                    circulation_market_value = data[i][17];
-                    turnover_volume = data[i][18];
-                    turnover_value = data[i][19];
-                    volume_ratio = data[i][20];
-                    circulation_shares = data[i][21];
-                    total_shares = data[i][22];
-                    BPS = data[i][23];
+                for (let i = 0; i < length; i++) {
+                    company_id = data[i]["company_id"];
+                    simple_name = data[i]["simple_name"];
+                    trade_status = data[i]["trade_status"];
+                    update_time = data[i]["update_time"];
+                    price_tem = data[i]["price_tem"];
+                    change_ = data[i]["change_"];
+                    change_percent = data[i]["change_percent"];
+                    closing_price = data[i]["closing_price"];
+                    opening_price = data[i]["opening_price"];
+                    highest = data[i]["highest"];
+                    lowest = data[i]["lowest"];
+                    amplitude = data[i]["amplitude"];
+                    turnover_ratio = data[i]["turnover_ratio"];
+                    PER = data[i]["PER"];
+                    dynamic_PER = data[i]["dynamic_PER"];
+                    PBR = data[i]["PBR"];
+                    market_value = data[i]["market_value"];
+                    circulation_market_value = data[i]["circulation_market_value"];
+                    turnover_volume = data[i]["turnover_volume"];
+                    turnover_value = data[i]["turnover_value"];
+                    volume_ratio = data[i]["volume_ratio"];
+                    circulation_shares = data[i]["circulation_shares"];
+                    total_shares = data[i]["total_shares"];
+                    BPS = data[i]["BPS"];
 
                     counter = i + 1;
 
@@ -184,9 +183,9 @@ class My_select {
 
                 for (let i = length - 1; i > -1; i--) {
 
-                    simple_name = data[i][1];
-                    price_tem = data[i][4];
-                    change_percent = data[i][6];
+                    simple_name = data[i]["simple_name"];
+                    price_tem = data[i]["price_tem"];
+                    change_percent = data[i]["change_percent"];
 
                     if (change_percent[0] != "-") {
                         html3 = html3 + "<li class=\"traffic-sales-content list-group-item \"><span\n" +
@@ -225,7 +224,6 @@ class My_select {
                     $.ajax({
                         type: "GET",
                         url: "http://175.178.119.52/stock/get_my_select_information/",
-                        dataType: 'json',
                         data: {
                             "my_companys": my_companys,
                         },
@@ -238,30 +236,30 @@ class My_select {
                             html2 = "";
                             html3 = "";
                             for (let i = 0; i < length; i++) {
-                                company_id = data[i][0];
-                                simple_name = data[i][1];
-                                trade_status = data[i][2];
-                                update_time = data[i][3];
-                                price_tem = data[i][4];
-                                change_ = data[i][5];
-                                change_percent = data[i][6];
-                                closing_price = data[i][7];
-                                opening_price = data[i][8];
-                                highest = data[i][9];
-                                lowest = data[i][10];
-                                amplitude = data[i][11];
-                                turnover_ratio = data[i][12];
-                                PER = data[i][13];
-                                dynamic_PER = data[i][14];
-                                PBR = data[i][15];
-                                market_value = data[i][16];
-                                circulation_market_value = data[i][17];
-                                turnover_volume = data[i][18];
-                                turnover_value = data[i][19];
-                                volume_ratio = data[i][20];
-                                circulation_shares = data[i][21];
-                                total_shares = data[i][22];
-                                BPS = data[i][23];
+                                company_id = data[i]["company_id"];
+                                simple_name = data[i]["simple_name"];
+                                trade_status = data[i]["trade_status"];
+                                update_time = data[i]["update_time"];
+                                price_tem = data[i]["price_tem"];
+                                change_ = data[i]["change_"];
+                                change_percent = data[i]["change_percent"];
+                                closing_price = data[i]["closing_price"];
+                                opening_price = data[i]["opening_price"];
+                                highest = data[i]["highest"];
+                                lowest = data[i]["lowest"];
+                                amplitude = data[i]["amplitude"];
+                                turnover_ratio = data[i]["turnover_ratio"];
+                                PER = data[i]["PER"];
+                                dynamic_PER = data[i]["dynamic_PER"];
+                                PBR = data[i]["PBR"];
+                                market_value = data[i]["market_value"];
+                                circulation_market_value = data[i]["circulation_market_value"];
+                                turnover_volume = data[i]["turnover_volume"];
+                                turnover_value = data[i]["turnover_value"];
+                                volume_ratio = data[i]["volume_ratio"];
+                                circulation_shares = data[i]["circulation_shares"];
+                                total_shares = data[i]["total_shares"];
+                                BPS = data[i]["BPS"];
 
                                 counter = i + 1;
 
@@ -314,11 +312,11 @@ class My_select {
 
                             }
 
-                            for (var i = length - 1; i > -1; i--) {
+                            for (let i = length - 1; i > -1; i--) {
 
-                                simple_name = data[i][1];
-                                price_tem = data[i][4];
-                                change_percent = data[i][6];
+                                simple_name = data[i]["simple_name"];
+                                price_tem = data[i]["price_tem"];
+                                change_percent = data[i]["change_percent"];
 
                                 if (change_percent[0] != "-") {
                                     html3 = html3 + "<li class=\"traffic-sales-content list-group-item \"><span\n" +

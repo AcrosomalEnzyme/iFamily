@@ -350,7 +350,7 @@ class Company_detail {
                     //登录成功就刷新网页，
                     //这样就能通过调用getinfo，加载出首页
                     //location.reload();
-                    // window.location.href="http://175.178.119.52/home/";
+                    window.location.href="http://175.178.119.52/stock/my_select";
                 }
             }
         });

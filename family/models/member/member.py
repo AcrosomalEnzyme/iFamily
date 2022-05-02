@@ -22,5 +22,5 @@ class Member(models.Model):
     family = models.ForeignKey(Family, on_delete=models.CASCADE, blank=True, null=True)
 
     # 展示用户的名字
-    def __str__(self):
-        return str(self.user)
+    # def __str__(self):
+    #     return str(self.user)

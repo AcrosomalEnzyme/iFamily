@@ -513,4 +513,4 @@ def company_detail_information_two(company_id,place,simple_name):
 
 
     # print(id)
-    return JsonResponse(stock_res)
+    return stock_res

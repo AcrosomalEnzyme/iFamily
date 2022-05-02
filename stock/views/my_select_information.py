@@ -43,23 +43,28 @@ def get_my_select_information(request):
     member = Member.objects.filter(user=user).first()
 
     # data = request.GET.get('my_companys')
-    data = unicode(request.GET.get('my_companys'))
+    data = request.GET.get('my_companys')
 
-    print(data)
+    # print(data)
     my_companys = data.split(";")
+    my_companys = my_companys[:-1]
 
     # print(my_companys)
 
     data=[]
-    # for company in my_companys:
-    #     company_info=company.split(",")
-    #     company_id = company_info[0]
-    #     place = company_info[1]
-    #     simple_name = company_info[2]
-    #     res=company_detail_information_two(company_id, place, simple_name)
-    #     data.append(res)
+    for company in my_companys:
+        company_info=company.split(",")
+        company_id = company_info[0]
+        place = company_info[1]
+        simple_name = company_info[2]
+        res=company_detail_information_two(company_id, place, simple_name)
+        data.append(res)
+
+
+    # 按照涨跌百分比进行排从高到低排列
+    data.sort(key=lambda x: x["change_percent"], reverse=True)
 
     return JsonResponse({
         'result': "success",
-        'data': my_companys,
+        'data': data,
     })
