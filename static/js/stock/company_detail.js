@@ -3,6 +3,7 @@ class Company_detail {
 
         this.$company_detail = $(".dashboard-main-wrapper");
         // this.$dom = this.$company_detail.find("#container");
+        this.$select = this.$company_detail.find("#select");
         this.company_id = company_id;
         this.place = place;
         this.simple_name = simple_name;
@@ -78,6 +79,7 @@ class Company_detail {
         // let dom = document.getElementById("container");
         // let myChart = echarts.init(dom);
 
+        this.add_listening_events();
 
 
         $.ajax({
@@ -151,8 +153,8 @@ class Company_detail {
 
                     if (change_percent[0] != "-") {
 
-                        html = "<div class=\"metric-label d-inline-block float-right text-success font-weight-bold\">\n" +
-                            "                                             <span class=\"icon-circle-small icon-box-xs text-success bg-success-light\">\n" +
+                        html = "<div class=\"metric-label d-inline-block float-right text-danger font-weight-bold\">\n" +
+                            "                                             <span class=\"icon-circle-small icon-box-xs text-danger bg-danger-light\">\n" +
                             "                                                 <i class=\"fa fa-fw fa-arrow-up\"></i>\n" +
                             "                                             </span>\n" +
                             "                                            <span class=\"ml-1\">" + change_percent + "</span>\n" +
@@ -163,8 +165,8 @@ class Company_detail {
                         $("#change_percent").html(html);
 
                     } else {
-                        html = "<div class=\"metric-label d-inline-block float-right text-danger font-weight-bold\">\n" +
-                            "                                        <span class=\"icon-circle-small icon-box-xs text-danger bg-danger-light bg-danger-light \"><i\n" +
+                        html = "<div class=\"metric-label d-inline-block float-right text-success font-weight-bold\">\n" +
+                            "                                        <span class=\"icon-circle-small icon-box-xs text-success bg-success-light bg-success-light \"><i\n" +
                             "                                                class=\"fa fa-fw fa-arrow-down\"></i></span><span class=\"ml-1\">" + change_percent + "</span>\n" +
                             "                                    </div>"
                         $("#change_percent").empty();
@@ -259,8 +261,8 @@ class Company_detail {
 
                         if (change_percent[0] != "-") {
 
-                            html = "<div class=\"metric-label d-inline-block float-right text-success font-weight-bold\">\n" +
-                                "                                             <span class=\"icon-circle-small icon-box-xs text-success bg-success-light\">\n" +
+                            html = "<div class=\"metric-label d-inline-block float-right text-danger font-weight-bold\">\n" +
+                                "                                             <span class=\"icon-circle-small icon-box-xs text-danger bg-danger-light\">\n" +
                                 "                                                 <i class=\"fa fa-fw fa-arrow-up\"></i>\n" +
                                 "                                             </span>\n" +
                                 "                                            <span class=\"ml-1\">" + change_percent + "</span>\n" +
@@ -271,8 +273,8 @@ class Company_detail {
                             $("#change_percent").html(html);
 
                         } else {
-                            html = "<div class=\"metric-label d-inline-block float-right text-danger font-weight-bold\">\n" +
-                                "                                        <span class=\"icon-circle-small icon-box-xs text-danger bg-danger-light bg-danger-light \"><i\n" +
+                            html = "<div class=\"metric-label d-inline-block float-right text-success font-weight-bold\">\n" +
+                                "                                        <span class=\"icon-circle-small icon-box-xs text-success bg-success-light bg-success-light \"><i\n" +
                                 "                                                class=\"fa fa-fw fa-arrow-down\"></i></span><span class=\"ml-1\">" + change_percent + "</span>\n" +
                                 "                                    </div>"
                             $("#change_percent").empty();
@@ -315,9 +317,33 @@ class Company_detail {
                     });
 
                 }, 5000);
-                
+
             }
         });
+    }
+
+
+    //统一绑定监听函数
+    add_listening_events()
+    {
+        let outer = this;
+        //this.add_listening_events_login();
+        this.add_listening_events_company_detail_information();
+    }
+
+    //股票详情界面的监听函数
+    add_listening_events_company_detail_information()
+    {
+        let outer = this;
+
+        //加入自选股的监听函数
+        this.$select.click(function(){
+            outer.select();
+        });
+
+    }
+
+    select(){
     }
 
 
