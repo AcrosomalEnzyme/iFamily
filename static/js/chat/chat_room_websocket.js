@@ -104,6 +104,7 @@ class Chat_room_websocket {
     //发送创建用户的消息
     send_create_member() {
         let outer = this;
+        // let family = this.family_name.encode('utf-8')
         //发送的API将JSON封装为字符串
         //发送信息时要携带自己的UUID，在playground中被赋值
         this.ws.send(JSON.stringify({
@@ -111,6 +112,7 @@ class Chat_room_websocket {
             'event': "create_member",
             'username': outer.username,
             'family_name': outer.family_name,
+            // 'family_name': family,
         }));
 
 
@@ -126,7 +128,6 @@ class Chat_room_websocket {
             'text': text,
         }));
     }
-
 
 
     //在历史记录中添加信息

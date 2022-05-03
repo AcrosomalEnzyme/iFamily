@@ -12,18 +12,32 @@ class ChatRoom(AsyncWebsocketConsumer):
         await self.accept()
         print('accept')
 
-
     async def disconnect(self, close_code):
         print('disconnect')
         await self.channel_layer.group_discard(self.room_name, self.channel_name);
 
-    #处理群发消息的函数'type': "group_send_event",
+    # 处理群发消息的函数'type': "group_send_event",
     async def group_send_event(self, data):
         await self.send(text_data=json.dumps(data))
 
     # 添加家庭成员（自己）
     async def create_member(self, data):
-        self.room_name = data['family_name']
+        # print()
+        # print()
+        # test = str(data['family_name'])
+        # test2 = test.encode('unicode_escape').decode('ascii')
+        family_name = str(data['family_name']).encode('unicode_escape').decode('ascii')
+        # str(family_name).replace("\\","")
+        # family_name.replace('f', 'ssss')
+        room_name = ""
+        for i in family_name:
+            if i != '\\':
+                room_name = room_name + i
+            else:
+                room_name = room_name + "-"
+
+        # self.room_name = data['family_name']
+        self.room_name = room_name
         await self.channel_layer.group_add(self.room_name, self.channel_name)
 
     # 群发聊天信息

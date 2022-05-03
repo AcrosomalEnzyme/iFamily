@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -30,8 +29,7 @@ DEBUG = True
 # 将175.178.119.52加入ALLOWED_HOSTS：
 # 可以ag ALLOWED_HOSTS，进行搜索定位
 
-ALLOWED_HOSTS = ["175.178.119.52","127.0.0.1","app1881.iFamily.acwing.com.cn"]
-
+ALLOWED_HOSTS = ["175.178.119.52", "127.0.0.1", "app1881.iFamily.acwing.com.cn"]
 
 # Application definition
 
@@ -82,7 +80,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'iFamily.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -122,7 +119,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -137,7 +133,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-DEFAULT_CHARSET= 'UTF-8'
+FILE_CHARSET = 'UTF-8'
+DEFAULT_CHARSET = 'UTF-8'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -153,9 +150,8 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 ASGI_APPLICATION = 'iFamily.asgi.application'
-#ASGI_APPLICATION = 'iFamily.routing.application'
+# ASGI_APPLICATION = 'iFamily.routing.application'
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
@@ -165,5 +161,5 @@ CHANNEL_LAYERS = {
     },
 }
 
-#设定每个游戏房间的容量
+# 设定每个游戏房间的容量
 ROOM_CAPACITY = 3

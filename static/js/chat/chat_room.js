@@ -1,4 +1,4 @@
-class Chat_room{
+class Chat_room {
     constructor() {
         this.username = "";
         this.photo = "";
@@ -15,7 +15,8 @@ class Chat_room{
         this.$home_nav_photo = this.$chat_room.find("#home_nav_photo");
         this.$home_nav_username = this.$chat_room.find("#home_nav_username");
         this.$home_nav_logout = this.$chat_room.find("#home_nav_logout");
-
+        // 网页标题
+        this.$chat_room_title = $("#chat_room_title");
         this.start();
     }
 
@@ -67,7 +68,6 @@ class Chat_room{
             }
         });
     }
-
 
 
     //获取用户是否登录的状态，web端
@@ -140,6 +140,7 @@ class Chat_room{
     update_page() {
         this.$home_nav_photo.attr('src', this.photo);
         this.$home_nav_username.text(this.username);
+        this.$chat_room_title.text("家庭聊天室：" + this.family_name);
     }
 
     //更新自己的在线信息

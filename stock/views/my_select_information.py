@@ -15,7 +15,7 @@ from stock.views.company_detail_information import company_detail_information_tw
 def get_my_companys(request):
     user = request.user
     member = Member.objects.filter(user=user).first()
-    file_path = member.stock_code.path
+    file_path = member.stock_code.path.encode('utf-8')
     file = open(file_path, 'r')
     codes = file.read().splitlines()
     file.close()
@@ -26,10 +26,11 @@ def get_my_companys(request):
 
     my_companys = ""
     for code in codes:
-        company = CompanyBaseInformation.objects.filter(company_id=code).first()
-        my_companys = my_companys + code + ","
-        my_companys = my_companys + company.place + ","
-        my_companys = my_companys + company.simple_name + ";"
+        if code:
+            company = CompanyBaseInformation.objects.filter(company_id=code).first()
+            my_companys = my_companys + code + ","
+            my_companys = my_companys + company.place + ","
+            my_companys = my_companys + company.simple_name + ";"
 
 
     return JsonResponse({

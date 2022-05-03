@@ -12,14 +12,15 @@ def select(request):
 
 
     member = Member.objects.filter(user=user).first()
-    file_path =member.stock_code.path
-    print(file_path)
+    file_path =member.stock_code.path.encode('utf-8')
+    # print(file_path)
     file = open(file_path, 'r')
 
     # codes = str(file.read().splitlines())
     codes = str(file.read())
     # codes = codes[2:]
     # codes = codes[:-1]
+    # print()
     # print()
     # print()
     # print(codes)
@@ -31,7 +32,9 @@ def select(request):
     # 表示不包含这个股票代码
     if codes.find(company_id) == -1:
         file = open(file_path, 'a')
+        # file.writelines(company_id)
         file.write(company_id)
+        file.write("\n")
         file.close()
         return JsonResponse({
             'result': "success",
