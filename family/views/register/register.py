@@ -38,12 +38,21 @@ def register(request):
     # test
     # file_name = "media/txt/member_stock/" + username + ".txt"
     # 一定要进行转码
-    file_name_ascii = "media/txt/member_stock/" + username + ".txt"
-    file_name = file_name_ascii.encode('utf-8')
+
+    username_ascii=str(username).encode('unicode_escape').decode('ascii')
+    new_username = ""
+
+    for i in username_ascii:
+        if i != '\\':
+            new_username = new_username + i
+        else:
+            new_username = new_username + "-"
+
+    file_name = "media/txt/member_stock/" + new_username + ".txt"
 
     file = open(file_name, "w")
     file.close()
-    file_name = "txt/member_stock/" + username + ".txt"
+    file_name = "txt/member_stock/" + new_username + ".txt"
     # file_name_ascii = "txt/member_stock/" + username + ".txt"
     # file_name = file_name_ascii.encode('utf-8')
 

@@ -15,14 +15,12 @@ from stock.views.company_detail_information import company_detail_information_tw
 def get_my_companys(request):
     user = request.user
     member = Member.objects.filter(user=user).first()
-    file_path = member.stock_code.path.encode('utf-8')
+    # file_path = member.stock_code.path.encode('utf-8')
+    file_path = member.stock_code.path
     file = open(file_path, 'r')
     codes = file.read().splitlines()
     file.close()
-    # return JsonResponse({
-    #     'result': "success",
-    #     'my_companys': codes,
-    # })
+
 
     my_companys = ""
     for code in codes:
